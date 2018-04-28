@@ -1,14 +1,15 @@
-import Test from './components/Test.vue'
+import loadGoogleCharts from './lib/google-charts-loader'
+import GChart from './components/GChart.vue'
 
 // Install the components
 export function install (Vue) {
-  Vue.component('test', Test)
-  /* -- Add more components here -- */
+  Vue.component('GChart', GChart)
 }
 
 // Expose the components
 export {
-  Test
+  loadGoogleCharts,
+  GChart
 }
 
 /* -- Plugin definition & Auto-install -- */
