@@ -19,7 +19,7 @@ npm i vue-google-charts
 
 ## Default import
 
-Install all the components:
+Install a component globally (use as plugin):
 
 ```javascript
 import Vue from 'vue'
@@ -28,13 +28,16 @@ import VueGoogleCharts from 'vue-google-charts'
 Vue.use(VueGoogleCharts)
 ```
 
-Use specific modules:
+Use locally in a component:
 
 ```javascript
-import Vue from 'vue'
-import { Test } from 'vue-google-charts'
+import { GChart } from 'vue-google-charts'
 
-Vue.component('test', Test)
+export default {
+  components: {
+    GChart
+  }
+}
 ```
 
 ## Browser
@@ -48,12 +51,103 @@ The plugin should be auto-installed. If not, you can install it manually with th
 
 # Usage
 
-> TODO
+Simple usage:
 
-# Example
+```html
+  <GChart
+    type="ColumnChart"
+    :data="chartData"
+    :options="chartOptions"
+  />
+```
+---
+```javascript
+export default {
+  data () {
+    return {
+      // Array will be automatically processed with visualization.arrayToDataTable function
+      chartData: [
+        ['Year', 'Sales', 'Expenses', 'Profit'],
+        ['2014', 1000, 400, 200],
+        ['2015', 1170, 460, 250],
+        ['2016', 660, 1120, 300],
+        ['2017', 1030, 540, 350]
+      ],
+      chartOptions: {
+        chart: {
+          title: 'Company Performance',
+          subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+        }
+      }
+    }
+  }
+}
+```
+---
+Load additional packages:
 
-> TODO
+```html
+  <GChart
+    :packages="['corechart', 'table', 'map']"
+    type="Map"
+    :data="chartData"
+    :options="chartOptions"
+  />
+```
+---
+Add event listeners:
 
+```html
+  <GChart
+    type="ColumnChart"
+    :data="chartData"
+    :options="chartOptions"
+    :events="chartEvents"
+  />
+```
+
+```javascript
+export default {
+  data () {
+    return {
+      // ...data, options, etc...
+      chartEvents: {
+        'select': () => {
+          // handle event here
+        }
+      }
+    }
+  }
+}
+```
+
+---
+Something very custom.
+You can get chart instance and charts api references to draw a custom chart:
+
+```html
+  <GChart
+    type="ColumnChart"
+    @ready="onChartReady"
+  />
+```
+
+```javascript
+export default {
+  methods: {
+    onChartReady (chart, google) {
+      const query = new google.visualization.Query('https://url-to-spreadsheet...')
+      query.send(response => {
+        const options = {
+          // some custom options
+        }
+        const data = response.getDataTable()
+        chart.draw(data, options)
+      })
+    }
+  }
+}
+```
 ---
 
 # Plugin Development
