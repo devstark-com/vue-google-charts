@@ -1,3 +1,4 @@
+require('default-passive-events') // removes [Violation] error
 import loadGoogleCharts from './lib/google-charts-loader'
 import GChart from './components/GChart.vue'
 
