@@ -51,7 +51,14 @@ The plugin should be auto-installed. If not, you can install it manually with th
 
 # Usage
 
-Simple usage:
+## Read the Google Charts docs first
+The `GChart` component is a wrapper for the original Google Charts, so it's assumed you are familiar with the vanilla Google Charts usage (https://developers.google.com/chart/).
+
+With `vue-google-charts` package you don't need to link script loader and load Google Charts package manually.
+
+Another bonus — reactive data binding. A chart will be redrawn automatically once `data` or `options` prop is changed.
+
+## Simple usage:
 
 ```html
   <GChart
@@ -84,7 +91,7 @@ export default {
 }
 ```
 ---
-Load additional packages:
+## Load additional packages:
 
 ```html
   <GChart
@@ -95,7 +102,7 @@ Load additional packages:
   />
 ```
 ---
-Add event listeners:
+## Add event listeners:
 
 ```html
   <GChart
@@ -110,7 +117,10 @@ Add event listeners:
 export default {
   data () {
     return {
-      // ...data, options, etc...
+      // {
+      //    eventName: handlerFunction,
+      //    eventName: handlerFunction,
+      // }
       chartEvents: {
         'select': () => {
           // handle event here
@@ -122,7 +132,8 @@ export default {
 ```
 
 ---
-Something very custom.
+## User `@ready` for something very custom
+
 You can get chart instance and charts api references to draw a custom chart:
 
 ```html
