@@ -101,7 +101,7 @@ export default {
     :options="chartOptions"
   />
 ```
-Using `settings` prop you can specify any loader setting available for google charts loader:
+Using `settings` prop you can specify any setting available for google charts loader:
 `packages`, `language`, `callback`, `mapsApiKey`.
 
 See more on [available setting](https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings)
