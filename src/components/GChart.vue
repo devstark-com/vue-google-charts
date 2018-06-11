@@ -14,9 +14,6 @@ export default {
       type: String,
       requred: true
     },
-    packages: {
-      type: Array
-    },
     data: {
       type: [Array, Object],
       default: () => []
@@ -24,6 +21,16 @@ export default {
     options: {
       type: Object,
       default: () => ({})
+    },
+    version: {
+      type: String,
+      default: 'current'
+    },
+    settings: {
+      type: Object,
+      default: () => ({
+        packages: ['corechart', 'table']
+      })
     },
     events: {
       type: Object
@@ -52,7 +59,7 @@ export default {
   },
 
   mounted () {
-    loadGoogleCharts(this.packages).then(api => {
+    loadGoogleCharts(this.version, this.settings).then(api => {
       chartsLib = api
       const chart = this.createChartObject()
       this.$emit('ready', chart, api)
@@ -68,7 +75,7 @@ export default {
     },
 
     getValidChartData () {
-      if (this.data instanceof chartsLib.visualization.DataView) return this.data
+      if (this.data instanceof chartsLib.visualization.DataTable) return this.data
       if (this.data instanceof chartsLib.visualization.DataView) return this.data
       if (Array.isArray(this.data)) return chartsLib.visualization.arrayToDataTable(this.data)
       return null
@@ -79,6 +86,7 @@ export default {
       this.attachListeners()
       return this.chartObject
     },
+
     attachListeners () {
       if (!this.events) return
       Object.entries(this.events).forEach(([event, listener]) => {

@@ -2,17 +2,16 @@
  * Usage:
  * import { loadGoogleCharts } from 'vue-google-charts'
  *
- * loadGoogleCharts(['corechart', 'map']) // loader params are optional
+ * loadGoogleCharts('current', { packages: ['corechart', 'map'] })
  *  .then(google => {
- *    const chart = new chartsLib.visualization.Map ...
+ *    const chart = new google.visualization.Map ...
  *  })
  */
 
 const chartsScriptUrl = 'https://www.gstatic.com/charts/loader.js'
-const defaultPackages = ['corechart', 'table']
 
 let chartsLoaderPromise = null
-let defaultChartsPromise = null
+const loadedPackages = new Map()
 
 export function getChartsLoader () {
   // If already included in the page:
@@ -31,23 +30,18 @@ export function getChartsLoader () {
   return chartsLoaderPromise
 }
 
-function loadPackages (loader, packages) {
-  return new Promise(resolve => {
-    loader.load('current', { packages })
-    loader.setOnLoadCallback(() => resolve(window.google))
-  })
-}
-
-function loadDefaultPackages (loader) {
-  if (!defaultChartsPromise) {
-    defaultChartsPromise = loadPackages(loader, defaultPackages)
-  }
-  return defaultChartsPromise
-}
-
-export default function loadGoogleCharts (packages) {
+export default function loadGoogleCharts (version = 'current', settings = {}) {
   return getChartsLoader().then(loader => {
-    if (!packages) return loadDefaultPackages(loader)
-    return loadPackages(loader, packages)
+    if (typeof settings !== 'object') throw new Error('Google Charts loader: settings must be an object')
+    const settingsKey = version + '_' + JSON.stringify(settings, Object.keys(settings).sort())
+
+    if (loadedPackages.has(settingsKey)) return loadedPackages.get(settingsKey)
+
+    const loaderPromise = new Promise(resolve => {
+      loader.load(version, settings)
+      loader.setOnLoadCallback(() => resolve(window.google))
+    })
+    loadedPackages.set(settingsKey, loaderPromise)
+    return loaderPromise
   })
 }
