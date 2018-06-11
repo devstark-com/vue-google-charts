@@ -95,12 +95,22 @@ export default {
 
 ```html
   <GChart
-    :packages="['corechart', 'table', 'map']"
+    :settings="{ packages: ['corechart', 'table', 'map'] }"
     type="Map"
     :data="chartData"
     :options="chartOptions"
   />
 ```
+Using `settings` prop you can specify any loader setting available for google charts loader:
+`packages`, `language`, `callback`, `mapsApiKey`.
+
+See more on [available setting](https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings)
+
+There's also `version` prop, so you can load a specific version, e.g. `version="upcoming"`.
+
+See more on [available versions](https://developers.google.com/chart/interactive/docs/basic_load_libs#load-version-name-or-number)
+
+
 ---
 ## Add event listeners:
 
@@ -181,7 +191,7 @@ npm run dev
 
 ## Use it in another project
 
-While developping, you can follow the install instructions of your plugin and link it into the project that uses it.
+While developing, you can follow the install instructions of your plugin and link it into the project that uses it.
 
 In the plugin folder:
 
