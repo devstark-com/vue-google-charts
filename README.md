@@ -142,7 +142,7 @@ export default {
 ```
 
 ---
-## User `@ready` for something very custom
+## Use `@ready` for something very custom
 
 You can get chart instance and charts api references to draw a custom chart:
 
