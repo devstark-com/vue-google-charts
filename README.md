@@ -217,6 +217,23 @@ npm run build
 
 ---
 
+## Demos
+
+1. Simple usage
+https://codesandbox.io/embed/p7k483o42j?module=%2Fsrc%2FApp.vue
+
+2. Material design bar chart
+https://codesandbox.io/embed/z699l6oq4p?module=%2Fsrc%2FApp.vue
+
+3. Bubble chart
+https://codesandbox.io/embed/rmqzv6p4mm?module=%2Fsrc%2FApp.vue
+
+4. Getting data from Google Spreadsheets
+https://codesandbox.io/embed/yqxxkp32mj?module=%2Fsrc%2FApp.vue
+
+5. Chart event handling
+https://codesandbox.io/embed/xlloookqqo?module=%2Fsrc%2FApp.vue
+
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
