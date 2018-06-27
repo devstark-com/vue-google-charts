@@ -34,6 +34,9 @@ export default {
     },
     events: {
       type: Object
+    },
+    createChart: {
+      type: Function
     }
   },
 
@@ -55,6 +58,10 @@ export default {
       handler () {
         this.drawChart()
       }
+    },
+    type (value) {
+      this.createChartObject()
+      this.drawChart()
     }
   },
 
@@ -82,7 +89,11 @@ export default {
     },
 
     createChartObject () {
-      this.chartObject = new chartsLib.visualization[this.type](this.$refs.chart)
+      const createChart = (el, google, type) => {
+        return new google.visualization[type](el)
+      }
+      const fn = this.createChart || createChart
+      this.chartObject = fn(this.$refs.chart, chartsLib, this.type)
       this.attachListeners()
       return this.chartObject
     },
@@ -95,4 +106,5 @@ export default {
     }
   }
 }
+
 </script>
