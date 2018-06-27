@@ -11,8 +11,7 @@ export default {
 
   props: {
     type: {
-      type: String,
-      requred: true
+      type: String
     },
     data: {
       type: [Array, Object],
@@ -90,6 +89,7 @@ export default {
 
     createChartObject () {
       const createChart = (el, google, type) => {
+        if (!type) throw new Error('please, provide chart type property')
         return new google.visualization[type](el)
       }
       const fn = this.createChart || createChart

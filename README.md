@@ -56,7 +56,7 @@ The `GChart` component is a wrapper for the original Google Charts, so it's assu
 
 With `vue-google-charts` package you don't need to link script loader and load Google Charts package manually.
 
-Another bonus — reactive data binding. A chart will be redrawn automatically once `data` or `options` prop is changed.
+Another bonus — reactive data binding. A chart will be redrawn automatically once `data` , `type` and `options` prop is changed.
 
 ## Simple usage:
 
@@ -169,6 +169,34 @@ export default {
   }
 }
 ```
+---
+## `createChart` property
+
+This property allows you to create custom chart object from outside of the component.
+`createChart` property is the function and accepts three arguments:
+`el` - the reference to chart element,
+`google` - Google chart library,
+`type` - chart type
+
+```html
+  <GChart
+    :type="chartType"
+    :data="chartData"
+    :options="chartOptions"
+    :createChart="(el, google) => new google.charts.Bar(el)"
+  />
+```
+
+By default the function looks like this:
+```javascript
+  (el, google, type) => {
+    return new google.visualization[type](el)
+  }
+```
+
+For example `createChart` may be used to create Material bar charts (Material bar charts expect of class `google.charts.Bar` instead of `google.visualization.BarChart`). See: https://codesandbox.io/embed/z699l6oq4p?module=%2Fsrc%2FApp.vue
+
+
 ---
 
 # Plugin Development
