@@ -1,7 +1,7 @@
 {
   "name": "vue-google-charts",
   "description": "Reactive Vue.js wrapper for Google Charts lib",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "author": {
     "name": "Refat",
     "email": "nobilix@gmail.com"
@@ -52,5 +52,8 @@
     "webpack": "^2.1.0-beta.28",
     "webpack-merge": "^1.1.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "debounce": "^1.1.0",
+    "lodash.debounce": "^4.0.8"
+  }
 }

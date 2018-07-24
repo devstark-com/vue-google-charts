@@ -4,8 +4,8 @@
 
 <script>
 import loadGoogleCharts from '../lib/google-charts-loader'
+import debounce from 'debounce'
 let chartsLib = null
-
 export default {
   name: 'GChart',
 
@@ -36,6 +36,10 @@ export default {
     },
     createChart: {
       type: Function
+    },
+    resizeDebounce: {
+      type: Number,
+      default: 200
     }
   },
 
@@ -71,6 +75,7 @@ export default {
       this.$emit('ready', chart, api)
       this.drawChart()
     })
+    if (this.resizeDebounce > 0) window.addEventListener('resize', debounce(this.drawChart, this.resizeDebounce))
   },
 
   methods: {
@@ -84,6 +89,7 @@ export default {
       if (this.data instanceof chartsLib.visualization.DataTable) return this.data
       if (this.data instanceof chartsLib.visualization.DataView) return this.data
       if (Array.isArray(this.data)) return chartsLib.visualization.arrayToDataTable(this.data)
+      if (typeof this.data === 'object') return new chartsLib.visualization.DataTable(this.data)
       return null
     },
 
