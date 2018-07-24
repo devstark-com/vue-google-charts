@@ -89,7 +89,7 @@ export default {
       if (this.data instanceof chartsLib.visualization.DataTable) return this.data
       if (this.data instanceof chartsLib.visualization.DataView) return this.data
       if (Array.isArray(this.data)) return chartsLib.visualization.arrayToDataTable(this.data)
-      if (typeof this.data === 'object') return new chartsLib.visualization.DataTable(this.data)
+      if (this.data !== null && typeof this.data === 'object') return new chartsLib.visualization.DataTable(this.data)
       return null
     },
 
