@@ -169,7 +169,9 @@ export default {
   }
 }
 ```
+
 ---
+
 ## `createChart` property
 
 This property allows you to create custom chart object from outside of the component.
@@ -196,6 +198,17 @@ By default the function looks like this:
 
 For example `createChart` may be used to create Material bar charts (Material bar charts expect of class `google.charts.Bar` instead of `google.visualization.BarChart`). See: https://codesandbox.io/embed/z699l6oq4p?module=%2Fsrc%2FApp.vue
 
+---
+## Responsive Chart Behaviour
+
+GCharts are responsive by default and they can change their width on `window.resize` event.
+The resize is debounces and you can control debounce time (ms) by using `resizeDebounce` property:
+```html
+  <GChart
+    :resizeDebounce="500"
+  />
+```
+If you don't need responsive behaviour for your charts, set `:resizeDebounce="0"`
 
 ---
 
