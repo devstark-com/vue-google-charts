@@ -79,7 +79,7 @@ export default {
   },
 
   beforeDestroy () {
-    if (this.chartObject) {
+    if (this.chartObject && typeof this.chartObject.clearChart === 'function') {
       this.chartObject.clearChart()
     }
   },
