@@ -5,13 +5,19 @@
 <script>
 import loadGoogleCharts from '../lib/google-charts-loader'
 import debounce from 'debounce'
+import chartTypes from '../lib/chart-types'
+
 let chartsLib = null
+
 export default {
   name: 'GChart',
 
   props: {
     type: {
-      type: String
+      type: String,
+      validator (val) {
+        return chartTypes.includes(val)
+      }
     },
     data: {
       type: [Array, Object],
