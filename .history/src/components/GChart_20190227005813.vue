@@ -88,10 +88,11 @@ export default {
     drawChart () {
       if (!chartsLib || !this.chartObject) return
 
-      const data = this.getValidChartData()
       const style = window.getComputedStyle(this.chartObject.container)
+      if (style.display === 'none') return
 
-      if (data && style.display !== 'none') this.chartObject.draw(data, this.options)
+      const data = this.getValidChartData()
+      if (data) this.chartObject.draw(data, this.options)
     },
 
     getValidChartData () {
