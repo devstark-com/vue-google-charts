@@ -78,7 +78,7 @@ export default {
     if (this.resizeDebounce > 0) window.addEventListener('resize', debounce(this.drawChart, this.resizeDebounce))
   },
 
-  beforeDestroy () {
+  afterDestroy () {
     if (this.chartObject && typeof this.chartObject.clearChart === 'function') {
       this.chartObject.clearChart()
     }
