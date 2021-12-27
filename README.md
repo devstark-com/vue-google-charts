@@ -219,7 +219,7 @@ If you don't need responsive behaviour for your charts, set `:resizeDebounce="0"
 The first time you create or clone your plugin, you need to install the default dependencies:
 
 ```
-npm i
+yarn install
 ```
 
 ## Watch and compile
@@ -227,7 +227,7 @@ npm i
 This will run webpack in watching mode and output the compiled files in the `dist` folder.
 
 ```
-npm run dev
+yarn dev
 ```
 
 ## Use it in another project
@@ -237,13 +237,13 @@ While developing, you can follow the install instructions of your plugin and lin
 In the plugin folder:
 
 ```
-npm link
+yarn link
 ```
 
 In the other project folder:
 
 ```
-npm link vue-google-charts
+yarn link vue-google-charts
 ```
 
 This will install it in the dependencies as a symlink, so that it gets any modifications made to the plugin.
@@ -253,7 +253,7 @@ This will install it in the dependencies as a symlink, so that it gets any modif
 This will build the plugin into the `dist` folder in production mode.
 
 ```
-npm run build
+yarn build
 ```
 
 ---
