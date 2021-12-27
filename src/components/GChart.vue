@@ -1,17 +1,19 @@
 <template>
-  <div ref="chart"></div>
+  <div ref="chart" />
 </template>
 
 <script>
 import loadGoogleCharts from '../lib/google-charts-loader'
 import debounce from 'debounce'
+
 let chartsLib = null
 export default {
   name: 'GChart',
 
   props: {
     type: {
-      type: String
+      type: String,
+      required: true,
     },
     data: {
       type: [Array, Object],
@@ -32,10 +34,12 @@ export default {
       })
     },
     events: {
-      type: Object
+      type: Object,
+      default: () => ({})
     },
     createChart: {
-      type: Function
+      type: Function,
+      default: () => ({})
     },
     resizeDebounce: {
       type: Number,
