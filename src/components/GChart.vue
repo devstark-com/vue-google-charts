@@ -1,5 +1,5 @@
 <template>
-  <div ref="chart"></div>
+  <div ref="chart" />
 </template>
 
 <script>
@@ -11,7 +11,8 @@ export default {
 
   props: {
     type: {
-      type: String
+      type: String,
+      required: true
     },
     data: {
       type: [Array, Object],
@@ -32,10 +33,12 @@ export default {
       })
     },
     events: {
-      type: Object
+      type: Object,
+      default: () => ({})
     },
     createChart: {
-      type: Function
+      type: Function,
+      default: () => ({})
     },
     resizeDebounce: {
       type: Number,
