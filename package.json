@@ -53,11 +53,5 @@
     "debounce": "^1.1.0"
   },
   "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
-  },
-  "lint-staged": {
-    "*.{vue,js}": [
-      "npm run lint"
-    ]
   }
 }
