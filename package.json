@@ -14,16 +14,13 @@
     "charts component"
   ],
   "license": "MIT",
-  "main": "dist/vue-google-charts.common.js",
+  "main": "dist/vue-google-charts.cjs.js",
   "unpkg": "dist/vue-google-charts.browser.js",
-  "module": "index.js",
+  "module": "dist/vue-google-charts.esm.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack --config config/webpack.config.dev.js --progress --watch",
-    "build": "npm run build:browser && npm run build:common",
-    "lint": "eslint --ext .js,.vue src --fix",
-    "build:browser": "cross-env NODE_ENV=production webpack --config config/webpack.config.browser.js --progress --hide-modules",
-    "build:common": "cross-env NODE_ENV=production webpack --config config/webpack.config.common.js --progress --hide-modules",
     "prepublishOnly": "yarn build",
+    "build": "rollup -c",
+    "lint": "eslint --ext .js,.vue src --fix",
     "commit": "cz",
     "enableGitHooks": "simple-git-hooks",
     "cleanPublish": "clean-publish"
@@ -40,22 +37,17 @@
     "@commitlint/cli": "^16.0.0",
     "@commitlint/config-conventional": "^16.0.0",
     "@commitlint/cz-commitlint": "^16.0.0",
-    "babel-core": "^6.0.0",
-    "babel-loader": "^6.0.0",
-    "babel-preset-es2015": "^6.14.0",
-    "babel-preset-stage-0": "^6.16.0",
+    "@vue/compiler-sfc": "^3.2.26",
     "clean-publish": "^3.4.5",
-    "cross-env": "^3.1.3",
     "css-loader": "^0.26.1",
     "eslint": "^8.5.0",
     "eslint-plugin-vue": "^8.2.0",
-    "extract-text-webpack-plugin": "^2.0.0-beta.4",
     "nano-staged": "^0.5.0",
+    "rollup": "^2.62.0",
+    "rollup-plugin-vue": "^6.0.0",
     "simple-git-hooks": "^2.7.0",
     "vue-loader": "^10.0.0",
-    "vue-template-compiler": "^2.1.6",
-    "webpack": "^2.1.0-beta.28",
-    "webpack-merge": "^1.1.2"
+    "vue-template-compiler": "^2.1.6"
   },
   "dependencies": {
     "debounce": "^1.1.0"
