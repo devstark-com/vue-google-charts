@@ -1,45 +1,59 @@
+import swc from 'rollup-plugin-swc';
 import vue from 'rollup-plugin-vue';
 
-function createBuild(config) {
-  return {
-    ...config,
-    plugins: [
-      vue()
-    ]
-  }
-}
+import pkg from './package.json';
 
-const fileName = "vue-google-charts"
+const external = _ => /node_modules/.test(_) && !/@swc\/helpers/.test(_);
+
+const attachPlugins = (targets) => [
+  vue(),
+  swc({
+    env: {
+      targets
+    },
+    module: {
+      type: "es6"
+    },
+    sourceMaps: true
+  })
+]
 
 module.exports = [
-  createBuild({
+  {
     input: "src/index.js",
-
+    plugins: attachPlugins("defaults and supports es6-module"),
     output: {
-      format: "esm",
+      file: pkg.module,
+      format: "es",
       exports: "named",
-      file: `dist/${fileName}.esm.js`
+      sourcemap: true
     },
-  }),
-  createBuild({
+    external,
+  },
+  {
     input: "src/index.js",
-
+    plugins: attachPlugins("defaults, not ie 11, not ie_mob 11"),
     output: {
+      file: pkg.main,
       format: "cjs",
       exports: "named",
-      file: `dist/${fileName}.cjs.js`
+      sourcemap: true
     },
-  }),
-  createBuild({
+    external,
+  },
+  {
     input: "src/wrapper.js",
-
+    plugins: attachPlugins("defaults, not ie 11, not ie_mob 11"),
     output: {
       globals: {
         debounce: "debounce",
         vue: "vue"
       },
+      file: pkg.unpkg,
       format: "umd",
-      file: `dist/${fileName}.browser.js`
+      exports: "named",
+      sourcemap: true
     },
-  }),
+    external,
+  }
 ]
