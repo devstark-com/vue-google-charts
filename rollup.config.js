@@ -1,59 +1,53 @@
-import swc from 'rollup-plugin-swc';
-import vue from 'rollup-plugin-vue';
+import vue from 'rollup-plugin-vue'
+import replace from "@rollup/plugin-replace";
+import commonjs from '@rollup/plugin-commonjs';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 
 import pkg from './package.json';
 
-const external = _ => /node_modules/.test(_) && !/@swc\/helpers/.test(_);
-
-const attachPlugins = (targets) => [
-  vue(),
-  swc({
-    env: {
-      targets
-    },
-    module: {
-      type: "es6"
-    },
-    sourceMaps: true
-  })
+const commonPlugins = [
+  replace({
+    preventAssignment: true,
+    values: {
+      VERSION: JSON.stringify(pkg.version)
+    }
+  }),
 ]
 
-module.exports = [
+export default [
   {
-    input: "src/index.js",
-    plugins: attachPlugins("defaults and supports es6-module"),
+    input: 'src/index.js',
     output: {
-      file: pkg.module,
-      format: "es",
-      exports: "named",
-      sourcemap: true
+      format: 'esm',
+      file: pkg.module
     },
-    external,
+    plugins: [
+      ...commonPlugins,
+      vue()
+    ]
   },
   {
-    input: "src/index.js",
-    plugins: attachPlugins("defaults, not ie 11, not ie_mob 11"),
+    input: 'src/index.js',
     output: {
-      file: pkg.main,
-      format: "cjs",
-      exports: "named",
-      sourcemap: true
+      format: 'cjs',
+      file: pkg.main
     },
-    external,
+    plugins: [
+      ...commonPlugins,
+      vue({ template: { optimizeSSR: true } })
+    ]
   },
   {
-    input: "src/wrapper.js",
-    plugins: attachPlugins("defaults, not ie 11, not ie_mob 11"),
+    input: 'src/wrapper.js',
     output: {
-      globals: {
-        debounce: "debounce",
-        vue: "vue"
-      },
-      file: pkg.unpkg,
-      format: "umd",
-      exports: "named",
-      sourcemap: true
+      format: 'iife',
+      file: pkg.unpkg
     },
-    external,
+    plugins: [
+      ...commonPlugins,
+      nodeResolve(),
+      commonjs(),
+      vue()
+    ]
   }
 ]

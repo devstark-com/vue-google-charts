@@ -34,11 +34,11 @@ export default {
     },
     events: {
       type: Object,
-      default: () => ({})
+      default: null
     },
     createChart: {
       type: Function,
-      default: () => ({})
+      default: null
     },
     resizeDebounce: {
       type: Number,
@@ -108,6 +108,7 @@ export default {
         return new google.visualization[type](el)
       }
       const fn = this.createChart || createChart
+      console.log(fn);
       this.chartObject = fn(this.$refs.chart, chartsLib, this.type)
       this.attachListeners()
       return this.chartObject
