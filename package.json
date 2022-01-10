@@ -41,7 +41,7 @@
     "@commitlint/config-conventional": "^16.0.0",
     "@commitlint/cz-commitlint": "^16.0.0",
     "babel-core": "^6.0.0",
-    "babel-loader": "^6.0.0",
+    "babel-loader": "^7.1.5",
     "babel-preset-es2015": "^6.14.0",
     "babel-preset-stage-0": "^6.16.0",
     "clean-publish": "^3.4.5",
