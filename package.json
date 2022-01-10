@@ -14,9 +14,9 @@
     "charts component"
   ],
   "license": "MIT",
-  "main": "dist/vue-google-charts.cjs.js",
+  "main": "dist/vue-google-charts.cjs",
   "unpkg": "dist/vue-google-charts.browser.js",
-  "module": "dist/vue-google-charts.esm.js",
+  "module": "dist/vue-google-charts.mjs",
   "scripts": {
     "prepublishOnly": "yarn build",
     "build": "rollup -c",

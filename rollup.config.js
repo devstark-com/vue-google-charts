@@ -38,9 +38,9 @@ export default [
     ]
   },
   {
-    input: 'src/wrapper.js',
+    input: 'src/umd.js',
     output: {
-      format: 'iife',
+      format: 'umd',
       file: pkg.unpkg
     },
     plugins: [

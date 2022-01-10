@@ -108,7 +108,6 @@ export default {
         return new google.visualization[type](el)
       }
       const fn = this.createChart || createChart
-      console.log(fn);
       this.chartObject = fn(this.$refs.chart, chartsLib, this.type)
       this.attachListeners()
       return this.chartObject
