@@ -9,7 +9,7 @@ const commonPlugins = [
   replace({
     preventAssignment: true,
     values: {
-      VERSION: JSON.stringify(pkg.version)
+      'import.meta.env.VERSION': JSON.stringify(pkg.version)
     }
   }),
 ]
