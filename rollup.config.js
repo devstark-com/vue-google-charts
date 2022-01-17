@@ -1,15 +1,16 @@
-  import vue from 'rollup-plugin-vue';
-  import swc from 'rollup-plugin-swc';
-  import replace from "@rollup/plugin-replace";
-  import commonjs from '@rollup/plugin-commonjs';
-  import { nodeResolve } from '@rollup/plugin-node-resolve';
+import vue from 'rollup-plugin-vue';
+import swc from 'rollup-plugin-swc';
+import replace from "@rollup/plugin-replace";
+import commonjs from '@rollup/plugin-commonjs';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 
 import pkg from './package.json';
 
 const extensions = ['.js', '.ts'];
 const external = _ => /node_modules/.test(_) && !/@swc\/helpers/.test(_);
 
-const plugins = targets => [
+const plugins = (targets, vueOptions = {}) => [
+  vue(vueOptions),
   nodeResolve({
     extensions
   }),
@@ -39,7 +40,6 @@ export default [
       file: pkg.module
     },
     plugins: [
-      vue(),
       ...plugins("defaults and supports es6-module"),
     ]
   },
@@ -51,8 +51,11 @@ export default [
       file: pkg.main
     },
     plugins: [
-      vue({ template: { optimizeSSR: true } }),
-      ...plugins("defaults, not ie 11, not ie_mob 11"),
+      ...plugins("defaults, not ie 11, not ie_mob 11", {
+        template: {
+          optimizeSSR: true
+        }
+      }),
     ]
   },
   {
@@ -62,7 +65,6 @@ export default [
       file: pkg.unpkg
     },
     plugins: [
-      vue(),
       ...plugins("defaults, not ie 11, not ie_mob 11"),
       commonjs(),
     ]
