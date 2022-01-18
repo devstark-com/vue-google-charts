@@ -34,11 +34,11 @@ export default {
     },
     events: {
       type: Object,
-      default: () => ({})
+      default: null
     },
     createChart: {
       type: Function,
-      default: () => ({})
+      default: null
     },
     resizeDebounce: {
       type: Number,
