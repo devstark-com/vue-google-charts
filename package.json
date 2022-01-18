@@ -1,19 +1,20 @@
 {
   "name": "vue-google-charts",
-  "description": "Reactive Vue.js wrapper for Google Charts lib",
   "version": "0.3.2",
+  "description": "Reactive Vue.js wrapper for Google Charts lib",
   "author": {
     "name": "Refat",
     "email": "nobilix@gmail.com"
   },
-  "keywords": [
-    "vue",
-    "vuejs",
-    "charts",
-    "google charts",
-    "charts component"
-  ],
+  "homepage": "https://github.com/devstark-com/vue-google-charts#readme",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devstark-com/vue-google-charts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/devstark-com/vue-google-charts/issues"
+  },
   "main": "./dist/index.cjs",
   "unpkg": "./dist/umd.js",
   "module": "./dist/index.js",
@@ -22,17 +23,17 @@
     "build": "rollup -c",
     "lint": "eslint --ext .js,.vue src rollup.config.js --fix",
     "commit": "cz",
-    "enableGitHooks": "simple-git-hooks",
+    "release": "standard-version",
+    "updateGitHooks": "simple-git-hooks",
     "cleanPublish": "clean-publish"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/devstark-com/vue-google-charts.git"
-  },
-  "bugs": {
-    "url": "https://github.com/devstark-com/vue-google-charts/issues"
-  },
-  "homepage": "https://github.com/devstark-com/vue-google-charts#readme",
+  "keywords": [
+    "vue",
+    "vuejs",
+    "charts",
+    "google charts",
+    "charts component"
+  ],
   "dependencies": {
     "debounce": "^1.1.0"
   },
@@ -47,7 +48,9 @@
     "@vue/compiler-sfc": "^3.2.26",
     "browserslist": "^4.19.1",
     "clean-publish": "^3.4.5",
+    "commitizen": "^4.2.4",
     "css-loader": "^0.26.1",
+    "cz": "^1.8.2",
     "eslint": "^8.5.0",
     "eslint-plugin-vue": "^8.2.0",
     "nano-staged": "^0.5.0",
@@ -55,6 +58,7 @@
     "rollup-plugin-swc": "^0.2.0",
     "rollup-plugin-vue": "^5.0.0",
     "simple-git-hooks": "^2.7.0",
+    "standard-version": "^9.3.2",
     "vue-loader": "^10.0.0",
     "vue-template-compiler": "^2.1.6"
   }
