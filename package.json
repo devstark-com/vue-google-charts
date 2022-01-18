@@ -14,13 +14,13 @@
     "charts component"
   ],
   "license": "MIT",
-  "main": "dist/vue-google-charts.cjs",
-  "unpkg": "dist/vue-google-charts.browser.js",
-  "module": "dist/vue-google-charts.mjs",
+  "main": "./dist/index.cjs",
+  "unpkg": "./dist/umd.js",
+  "module": "./dist/index.js",
   "scripts": {
     "prepublishOnly": "yarn build",
     "build": "rollup -c",
-    "lint": "eslint --ext .js,.vue src --fix",
+    "lint": "eslint --ext .js,.vue src rollup.config.js --fix",
     "commit": "cz",
     "enableGitHooks": "simple-git-hooks",
     "cleanPublish": "clean-publish"
@@ -33,6 +33,9 @@
     "url": "https://github.com/devstark-com/vue-google-charts/issues"
   },
   "homepage": "https://github.com/devstark-com/vue-google-charts#readme",
+  "dependencies": {
+    "debounce": "^1.1.0"
+  },
   "devDependencies": {
     "@commitlint/cli": "^16.0.0",
     "@commitlint/config-conventional": "^16.0.0",
@@ -54,8 +57,5 @@
     "simple-git-hooks": "^2.7.0",
     "vue-loader": "^10.0.0",
     "vue-template-compiler": "^2.1.6"
-  },
-  "dependencies": {
-    "debounce": "^1.1.0"
   }
 }
