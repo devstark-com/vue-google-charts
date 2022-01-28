@@ -46,6 +46,7 @@
     "@rollup/plugin-node-resolve": "^13.1.1",
     "@rollup/plugin-replace": "^3.0.1",
     "@swc/core": "^1.2.124",
+    "@swc/helpers": "^0.3.2",
     "@vue/compiler-sfc": "^3.2.26",
     "browserslist": "^4.19.1",
     "clean-publish": "^3.4.5",

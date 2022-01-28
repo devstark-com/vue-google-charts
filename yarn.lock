@@ -416,6 +416,11 @@
     "@swc/core-win32-ia32-msvc" "1.2.124"
     "@swc/core-win32-x64-msvc" "1.2.124"
 
+"@swc/helpers@^0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@swc/helpers/-/helpers-0.3.2.tgz#02b370431fb8827450577ff852d56fc5fb4e0b40"
+  integrity sha512-qEru2uaH1vKZNCZR4rFCUZaflsBP7IWiGcIoQe22qi5tm+HEG/yPdhSba+ZCNTWk2xyYpx/nEFkncDY3orEx3w==
+
 "@tsconfig/node10@^1.0.7":
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/@tsconfig/node10/-/node10-1.0.8.tgz#c1e4e80d6f964fbecb3359c43bd48b40f7cadad9"
