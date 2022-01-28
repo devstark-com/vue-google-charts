@@ -1,0 +1,24 @@
+[
+  {
+    "path": "dist/index.cjs",
+    "limit": "2.24 KB",
+    "webpack": false,
+    "running": false
+  },
+  {
+    "path": "dist/index.cjs",
+    "limit": "2.06 KB",
+    "import": "{ GChart }"
+  },
+  {
+    "path": "dist/umd.js",
+    "limit": "3.28 KB",
+    "webpack": false,
+    "running": false
+  },
+  {
+    "path": "dist/index.js",
+    "limit": "1.93 KB",
+    "import": "{ GChart }"
+  }
+]
