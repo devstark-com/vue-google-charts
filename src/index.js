@@ -1,16 +1,13 @@
-import loadGoogleCharts from './lib/google-charts-loader'
-import GChart from './components/GChart.vue'
+import loadGoogleCharts from './lib/google-charts-loader';
+import GChart from './components/GChart.vue';
 
 // Install the components
-export function install (Vue) {
-  Vue.component('GChart', GChart)
+export function install(Vue) {
+  Vue.component('GChart', GChart);
 }
 
 // Expose the components
-export {
-  loadGoogleCharts,
-  GChart
-}
+export { loadGoogleCharts, GChart };
 
 /* -- Plugin definition & Auto-install -- */
 /* You shouldn't have to modify the code below */
@@ -19,18 +16,18 @@ export {
 const plugin = {
   /* eslint-disable no-undef */
   version: import.meta.env.VERSION,
-  install
-}
+  install,
+};
 
-export default plugin
+export default plugin;
 
 // Auto-install
-let GlobalVue = null
+let GlobalVue = null;
 if (typeof window !== 'undefined') {
-  GlobalVue = window.Vue
+  GlobalVue = window.Vue;
 } else if (typeof global !== 'undefined') {
-  GlobalVue = global.Vue
+  GlobalVue = global.Vue;
 }
 if (GlobalVue) {
-  GlobalVue.use(plugin)
+  GlobalVue.use(plugin);
 }
