@@ -4,14 +4,15 @@ module.exports = {
   parser: 'vue-eslint-parser',
 
   parserOptions: {
-    sourceType: 'module'
+    sourceType: 'module',
   },
 
   extends: [
-    "plugin:vue/base",
-    "plugin:vue/recommended",
-    "plugin:vue/strongly-recommended",
-    "plugin:vue/essential"
+    'plugin:vue/base',
+    'plugin:vue/recommended',
+    'plugin:vue/strongly-recommended',
+    'plugin:vue/essential',
+    'prettier',
   ],
 
   env: {
@@ -27,5 +28,5 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     // trailing comma
     // 'comma-dangle': ['error', 'always-multiline'],
-  }
-}
+  },
+};
