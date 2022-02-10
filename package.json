@@ -19,7 +19,7 @@
   "unpkg": "./dist/umd.js",
   "module": "./dist/index.js",
   "scripts": {
-    "prepublishOnly": "yarn build",
+    "prepublishOnly": "pnpm build",
     "build": "rollup -c",
     "lint": "eslint --ext .js,.vue src rollup.config.js --fix",
     "format": "prettier --write src rollup.config.js",
@@ -68,5 +68,10 @@
     "standard-version": "^9.3.2",
     "vue-loader": "^10.0.0",
     "vue-template-compiler": "^2.1.6"
+  },
+  "pnpm": {
+    "overrides": {
+      "puppeteer-core": "13.2.0"
+    }
   }
 }
