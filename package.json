@@ -19,7 +19,7 @@
   "unpkg": "./dist/umd.js",
   "module": "./dist/index.js",
   "scripts": {
-    "prepublishOnly": "yarn build",
+    "prepublishOnly": "pnpm build",
     "build": "rollup -c",
     "lint": "eslint --ext .js,.vue src rollup.config.js --fix",
     "format": "prettier --write src rollup.config.js",
@@ -53,7 +53,6 @@
     "browserslist": "^4.19.1",
     "clean-publish": "^3.4.5",
     "commitizen": "^4.2.4",
-    "css-loader": "^0.26.1",
     "cz": "^1.8.2",
     "eslint": "^8.5.0",
     "eslint-config-prettier": "^8.3.0",
@@ -66,7 +65,11 @@
     "simple-git-hooks": "^2.7.0",
     "size-limit": "^7.0.5",
     "standard-version": "^9.3.2",
-    "vue-loader": "^10.0.0",
     "vue-template-compiler": "^2.1.6"
+  },
+  "pnpm": {
+    "overrides": {
+      "puppeteer-core": "13.2.0"
+    }
   }
 }
