@@ -1,3 +1,4 @@
 {
-  "packageManager: "pnpm"
+  "withoutPublish": true,
+  "tempDir": "package"
 }
