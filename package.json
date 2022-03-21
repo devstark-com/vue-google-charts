@@ -15,19 +15,25 @@
   "bugs": {
     "url": "https://github.com/devstark-com/vue-google-charts/issues"
   },
-  "main": "./dist/index.cjs",
-  "unpkg": "./dist/umd.js",
-  "module": "./dist/index.js",
+  "main": "./src/index.js",
+  "publishConfig": {
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.js",
+    "unpkg": "./dist/umd.js",
+    "directory": "package"
+  },
   "scripts": {
-    "prepublishOnly": "pnpm build",
+    "prepublishOnly": "pnpm build && del ./package && clean-publish",
+    "postpublish": "del ./package",
     "build": "rollup -c",
     "lint": "eslint --ext .js,.vue src rollup.config.js --fix",
     "format": "prettier --write src rollup.config.js",
     "test:size": "size-limit",
     "commit": "cz",
-    "release": "standard-version",
-    "updateGitHooks": "simple-git-hooks",
-    "cleanPublish": "clean-publish"
+    "bumpVersion": "standard-version",
+    "createGithubRelease": "simple-github-release",
+    "release": "pnpm bumpVersion && git push origin master --tags && pnpm createGithubRelease",
+    "updateGitHooks": "simple-git-hooks"
   },
   "keywords": [
     "vue",
@@ -54,6 +60,7 @@
     "clean-publish": "^3.4.5",
     "commitizen": "^4.2.4",
     "cz": "^1.8.2",
+    "del-cli": "^4.0.1",
     "eslint": "^8.5.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-vue": "^8.2.0",
@@ -63,6 +70,7 @@
     "rollup-plugin-swc": "^0.2.0",
     "rollup-plugin-vue": "^5.0.0",
     "simple-git-hooks": "^2.7.0",
+    "simple-github-release": "^1.0.0",
     "size-limit": "^7.0.5",
     "standard-version": "^9.3.2",
     "vue-template-compiler": "^2.1.6"
