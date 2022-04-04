@@ -35,8 +35,9 @@ export default [
     plugins: plugins('defaults and supports es6-module'),
     external,
     output: {
-      format: 'esm',
+      format: 'es',
       file: pkg.publishConfig.module,
+      sourcemap: true,
     },
   },
   {
@@ -50,6 +51,8 @@ export default [
     output: {
       format: 'cjs',
       file: pkg.publishConfig.main,
+      exports: 'named',
+      sourcemap: true,
     },
   },
   {
@@ -58,6 +61,9 @@ export default [
     output: {
       format: 'umd',
       file: pkg.publishConfig.unpkg,
+      exports: 'named',
+      sourcemap: true,
+      name: pkg.name,
     },
   },
 ];
