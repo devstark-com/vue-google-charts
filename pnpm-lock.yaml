@@ -10,7 +10,7 @@ specifiers:
   '@rollup/plugin-commonjs': ^21.0.1
   '@rollup/plugin-node-resolve': ^13.1.1
   '@rollup/plugin-replace': ^3.0.1
-  '@size-limit/preset-big-lib': ^7.0.5
+  '@size-limit/preset-big-lib': ^7.0.8
   '@swc/core': ^1.2.124
   '@swc/helpers': ^0.3.2
   '@vue/compiler-sfc': ^3.2.26
@@ -30,7 +30,7 @@ specifiers:
   rollup-plugin-vue: ^5.0.0
   simple-git-hooks: ^2.7.0
   simple-github-release: ^1.0.0
-  size-limit: ^7.0.5
+  size-limit: ^7.0.8
   standard-version: ^9.3.2
   vue-template-compiler: ^2.1.6
 
