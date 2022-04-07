@@ -11,12 +11,6 @@
     "import": "{ GChart }"
   },
   {
-    "path": "dist/umd.js",
-    "limit": "3.7 KB",
-    "webpack": false,
-    "running": false
-  },
-  {
     "path": "dist/index.js",
     "limit": "1.95 KB",
     "import": "{ GChart }"
