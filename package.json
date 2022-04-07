@@ -43,6 +43,9 @@
     "google charts",
     "charts component"
   ],
+  "peerDependencies": {
+    "vue": "^2.6.0"
+  },
   "dependencies": {
     "debounce": "^1.1.0"
   },
