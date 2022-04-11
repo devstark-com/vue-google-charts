@@ -33,7 +33,9 @@
     "bumpVersion": "standard-version",
     "createGithubRelease": "simple-github-release",
     "release": "pnpm bumpVersion && git push origin master --tags && pnpm createGithubRelease",
-    "updateGitHooks": "simple-git-hooks"
+    "updateGitHooks": "simple-git-hooks",
+    "start:storybook": "start-storybook -p 6006",
+    "build:storybook": "del ./storybook-static; NODE_ENV=production build-storybook"
   },
   "keywords": [
     "vue",
@@ -49,15 +51,21 @@
     "debounce": "^1.1.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.9",
     "@commitlint/cli": "^16.0.0",
     "@commitlint/config-conventional": "^16.0.0",
     "@commitlint/cz-commitlint": "^16.0.0",
+    "@import-meta-env/babel": "^0.1.9",
     "@rollup/plugin-node-resolve": "^13.1.1",
     "@rollup/plugin-replace": "^3.0.1",
     "@size-limit/preset-big-lib": "^7.0.8",
+    "@storybook/addon-actions": "^6.4.20",
+    "@storybook/addon-essentials": "^6.4.20",
+    "@storybook/vue": "^6.4.20",
     "@swc/core": "^1.2.124",
     "@swc/helpers": "^0.3.2",
     "@vue/compiler-sfc": "^3.2.26",
+    "babel-loader": "^8.2.4",
     "browserslist": "^4.19.1",
     "clean-publish": "^3.4.5",
     "commitizen": "^4.2.4",
@@ -75,6 +83,8 @@
     "simple-github-release": "^1.0.0",
     "size-limit": "^7.0.8",
     "standard-version": "^9.3.2",
+    "vue": "^2.6.8",
+    "vue-loader": "15.9.8",
     "vue-template-compiler": "^2.1.6"
   },
   "pnpm": {

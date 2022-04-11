@@ -1,0 +1,11 @@
+{
+  "plugins": [
+    [
+      "module:@import-meta-env/babel",
+      {
+        "example": "import.meta.env.VERSION"
+      }
+    ]
+  ],
+  "comments": false
+}
