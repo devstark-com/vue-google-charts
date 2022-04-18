@@ -1,8 +1,8 @@
 import { shallowMount } from '@vue/test-utils';
 
-import { GChart } from '../src/index.js';
+import { GChart } from '../src/index';
 
-describe('CandlestickChart', () => {
+describe('BarChart', () => {
   const Component = {
     template:
       '<div><GChart :type="type" :data="data" :options="options"/></div>',
@@ -10,19 +10,27 @@ describe('CandlestickChart', () => {
     props: ['type', 'data', 'options'],
   };
 
-  const type = 'CandlestickChart';
+  const type = 'BarChart';
 
   const data = [
-    ['day', 'a', 'b', 'c', 'd'],
-    ['Mon', 20, 28, 38, 45],
-    ['Tue', 31, 38, 55, 66],
-    ['Wed', 50, 55, 77, 80],
-    ['Thu', 50, 77, 66, 77],
-    ['Fri', 15, 66, 22, 68],
+    ['City', '2010 Population', '2000 Population'],
+    ['New York City, NY', 8175000, 8008000],
+    ['Los Angeles, CA', 3792000, 3694000],
+    ['Chicago, IL', 2695000, 2896000],
+    ['Houston, TX', 2099000, 1953000],
+    ['Philadelphia, PA', 1526000, 1517000],
   ];
 
   const options = {
-    legend: 'none',
+    title: 'Population of Largest U.S. Cities',
+    chartArea: { width: '50%' },
+    hAxis: {
+      title: 'Total Population',
+      minValue: 0,
+    },
+    vAxis: {
+      title: 'City',
+    },
     width: 800,
     height: 600,
   };

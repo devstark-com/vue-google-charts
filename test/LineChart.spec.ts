@@ -1,8 +1,8 @@
 import { shallowMount } from '@vue/test-utils';
 
-import { GChart } from '../src/index.js';
+import { GChart } from '../src/index';
 
-describe('BarChart', () => {
+describe('LineChart', () => {
   const Component = {
     template:
       '<div><GChart :type="type" :data="data" :options="options"/></div>',
@@ -10,27 +10,20 @@ describe('BarChart', () => {
     props: ['type', 'data', 'options'],
   };
 
-  const type = 'BarChart';
+  const type = 'LineChart';
 
   const data = [
-    ['City', '2010 Population', '2000 Population'],
-    ['New York City, NY', 8175000, 8008000],
-    ['Los Angeles, CA', 3792000, 3694000],
-    ['Chicago, IL', 2695000, 2896000],
-    ['Houston, TX', 2099000, 1953000],
-    ['Philadelphia, PA', 1526000, 1517000],
+    ['Year', 'Sales', 'Expenses'],
+    ['2004', 1000, 400],
+    ['2005', 1170, 460],
+    ['2006', 660, 1120],
+    ['2007', 1030, 540],
   ];
 
   const options = {
-    title: 'Population of Largest U.S. Cities',
-    chartArea: { width: '50%' },
-    hAxis: {
-      title: 'Total Population',
-      minValue: 0,
-    },
-    vAxis: {
-      title: 'City',
-    },
+    title: 'Company Performance',
+    curveType: 'function',
+    legend: { position: 'bottom' },
     width: 800,
     height: 600,
   };

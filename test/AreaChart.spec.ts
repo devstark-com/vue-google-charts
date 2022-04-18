@@ -1,8 +1,8 @@
 import { shallowMount } from '@vue/test-utils';
 
-import { GChart } from '../src/index.js';
+import { GChart } from '../src/index';
 
-describe('Table', () => {
+describe('AreaChart', () => {
   const Component = {
     template:
       '<div><GChart :type="type" :data="data" :options="options"/></div>',
@@ -10,21 +10,21 @@ describe('Table', () => {
     props: ['type', 'data', 'options'],
   };
 
-  const type = 'Table';
+  const type = 'AreaChart';
 
   const data = [
-    ['Name', 'Salary', 'Full time employee'],
-    ['Mike', { v: 10000, f: '$10,000' }, true],
-    ['Jim', { v: 8000, f: '$8,000' }, false],
-    ['Alice', { v: 12500, f: '$12,500' }, true],
-    ['Bob', { v: 7000, f: '$7,000' }, true],
+    ['Year', 'Sales', 'Expenses'],
+    ['2013', 1000, 400],
+    ['2014', 1170, 460],
+    ['2015', 660, 1120],
+    ['2016', 1030, 540],
   ];
 
   const options = {
     title: 'Company Performance',
-    curveType: 'function',
-    legend: { position: 'bottom' },
-    pageSize: 1,
+    hAxis: { title: 'Year', titleTextStyle: { color: '#333' } },
+    vAxis: { minValue: 0 },
+    chartArea: { width: '50%', height: '70%' },
     width: 800,
     height: 600,
   };

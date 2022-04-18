@@ -1,8 +1,8 @@
 import { shallowMount } from '@vue/test-utils';
 
-import { GChart } from '../src/index.js';
+import { GChart } from '../src/index';
 
-describe('PieChart', () => {
+describe('SteppedAreaChart', () => {
   const Component = {
     template:
       '<div><GChart :type="type" :data="data" :options="options"/></div>',
@@ -10,19 +10,20 @@ describe('PieChart', () => {
     props: ['type', 'data', 'options'],
   };
 
-  const type = 'PieChart';
+  const type = 'SteppedAreaChart';
 
   const data = [
-    ['Task', 'Hours per Day'],
-    ['Work', 11],
-    ['Eat', 2],
-    ['Commute', 2],
-    ['Watch TV', 2],
-    ['Sleep', 7],
+    ['Director (Year)', 'Rotten Tomatoes', 'IMDB'],
+    ['Alfred Hitchcock (1935)', 8.4, 7.9],
+    ['Ralph Thomas (1959)', 6.9, 6.5],
+    ['Don Sharp (1978)', 6.5, 6.4],
+    ['James Hawes (2008)', 4.4, 6.2],
   ];
 
   const options = {
-    title: 'My Daily Activities',
+    title: "The decline of 'The 39 Steps'",
+    vAxis: { title: 'Accumulated Rating' },
+    isStacked: true,
     width: 800,
     height: 600,
   };

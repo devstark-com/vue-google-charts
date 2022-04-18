@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
 
-import { GChart } from '../src/index.js';
+import { GChart } from '../src/index';
 
 describe('ComboChart', () => {
   const Component = {
