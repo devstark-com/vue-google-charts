@@ -43,6 +43,7 @@ specifiers:
   simple-github-release: ^1.0.0
   size-limit: ^7.0.8
   standard-version: ^9.3.2
+  tsd: ^0.20.0
   typescript: ^4.6.3
   vue: ^2.6.14
   vue-loader: 15.9.8
@@ -90,6 +91,7 @@ devDependencies:
   simple-github-release: 1.0.0
   size-limit: 7.0.8
   standard-version: 9.3.2
+  tsd: 0.20.0
   typescript: 4.6.3
   vue: 2.6.14
   vue-loader: 15.9.8_vue-template-compiler@2.6.14
@@ -4522,6 +4524,11 @@ packages:
     resolution: {integrity: sha512-eZxlbI8GZscaGS7kkc/trHTT5xgrjH3/1n2JDwusC9iahPKWMRvRjJSAN5mCXviuTGQ/lHnhvv8Q1YTpnfz9gA==}
     dev: true
 
+  /@tsd/typescript/4.6.3:
+    resolution: {integrity: sha512-WjipklCf6qWQL4Hkw+FSwOXMA5JqKv04ro/c1aviYSzLJFdcFMrR/FHjOGBIEAIq7pb8Bw74wd+G45dWfC/Jnw==}
+    hasBin: true
+    dev: true
+
   /@types/babel__core/7.1.19:
     resolution: {integrity: sha512-WEOTgRsbYkvA/KCsDwVEGkd7WAr1e3g31VHQ8zy5gul/V1qKullU/BU5I68X5v7V3GnB9eotmom4v5a5gjxorw==}
     dependencies:
@@ -4566,6 +4573,13 @@ packages:
     dependencies:
       '@types/eslint': 8.4.1
       '@types/estree': 0.0.50
+    dev: true
+
+  /@types/eslint/7.29.0:
+    resolution: {integrity: sha512-VNcvioYDH8/FxaeTKkM4/TiTwt6pBV9E3OfGmvaw8tPl0rrHCJ4Ll15HRT+pMiFAf/MLQvAzC+6RzUMEL9Ceng==}
+    dependencies:
+      '@types/estree': 0.0.50
+      '@types/json-schema': 7.0.9
     dev: true
 
   /@types/eslint/8.4.1:
@@ -8077,6 +8091,20 @@ packages:
       eslint: 8.8.0
     dev: true
 
+  /eslint-formatter-pretty/4.1.0:
+    resolution: {integrity: sha512-IsUTtGxF1hrH6lMWiSl1WbGaiP01eT6kzywdY1U+zLc0MP+nwEnUiS9UI8IaOTUhTeQJLlCEWIbXINBH4YJbBQ==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@types/eslint': 7.29.0
+      ansi-escapes: 4.3.2
+      chalk: 4.1.2
+      eslint-rule-docs: 1.1.231
+      log-symbols: 4.1.0
+      plur: 4.0.0
+      string-width: 4.2.3
+      supports-hyperlinks: 2.2.0
+    dev: true
+
   /eslint-plugin-vue/8.4.1_eslint@8.8.0:
     resolution: {integrity: sha512-nmWOhNmDx9TZ+yP9ZhezTkZUupSHsYA2TocRm+efPSXMOyFrVczVlaIuQcLBjCtI8CbkBiUQ3VcyQsjlIhDrhA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -8090,6 +8118,10 @@ packages:
       vue-eslint-parser: 8.2.0_eslint@8.8.0
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /eslint-rule-docs/1.1.231:
+    resolution: {integrity: sha512-egHz9A1WG7b8CS0x1P6P/Rj5FqZOjray/VjpJa14tMZalfRKvpE2ONJ3plCM7+PcinmU4tcmbPLv0VtwzSdLVA==}
     dev: true
 
   /eslint-scope/4.0.3:
@@ -9716,6 +9748,11 @@ packages:
   /ipaddr.js/1.9.1:
     resolution: {integrity: sha512-0KI/607xoxSToH7GjN1FfSbLoU0+btTicjsQSWQlh/hZykN8KpmMf7uYwPW3R+akZ6R/w18ZlXSHBYXiYUPO3g==}
     engines: {node: '>= 0.10'}
+    dev: true
+
+  /irregular-plurals/3.3.0:
+    resolution: {integrity: sha512-MVBLKUTangM3EfRPFROhmWQQKRDsrgI83J8GS3jXy+OwYqiR2/aoWndYQ5416jLE3uaGgLH7ncme3X9y09gZ3g==}
+    engines: {node: '>=8'}
     dev: true
 
   /is-absolute-url/3.0.3:
@@ -11416,6 +11453,24 @@ packages:
       yargs-parser: 20.2.9
     dev: true
 
+  /meow/9.0.0:
+    resolution: {integrity: sha512-+obSblOQmRhcyBt62furQqRAQpNyWXo8BuQ5bN7dG8wmwQ+vwHKp/rCFD4CrTP8CsDQD1sjoZ94K417XEUk8IQ==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@types/minimist': 1.2.2
+      camelcase-keys: 6.2.2
+      decamelize: 1.2.0
+      decamelize-keys: 1.1.0
+      hard-rejection: 2.1.0
+      minimist-options: 4.1.0
+      normalize-package-data: 3.0.3
+      read-pkg-up: 7.0.1
+      redent: 3.0.0
+      trim-newlines: 3.0.1
+      type-fest: 0.18.1
+      yargs-parser: 20.2.9
+    dev: true
+
   /merge-descriptors/1.0.1:
     resolution: {integrity: sha1-sAqqVW3YtEVoFQ7J0blT8/kMu2E=}
     dev: true
@@ -12443,6 +12498,13 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       find-up: 5.0.0
+    dev: true
+
+  /plur/4.0.0:
+    resolution: {integrity: sha512-4UGewrYgqDFw9vV6zNV+ADmPAUAfJPKtGvb/VdpQAx25X5f3xXdGdyOEVFwkl8Hl/tl7+xbeHqSEM+D5/TirUg==}
+    engines: {node: '>=10'}
+    dependencies:
+      irregular-plurals: 3.3.0
     dev: true
 
   /pnp-webpack-plugin/1.6.4_typescript@4.6.3:
@@ -15076,6 +15138,19 @@ packages:
         optional: true
     dependencies:
       typescript: 4.6.3
+    dev: true
+
+  /tsd/0.20.0:
+    resolution: {integrity: sha512-iba/JlyT3qtnA9t8VrX2Fipu3L31U48oRIf1PNs+lIwQ7n63GTkt9eQlB5bLtfb7nYfy9t8oZzs+K4QEoEIS8Q==}
+    engines: {node: '>=12'}
+    hasBin: true
+    dependencies:
+      '@tsd/typescript': 4.6.3
+      eslint-formatter-pretty: 4.1.0
+      globby: 11.1.0
+      meow: 9.0.0
+      path-exists: 4.0.0
+      read-pkg-up: 7.0.1
     dev: true
 
   /tslib/1.14.1:

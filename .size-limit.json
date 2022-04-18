@@ -1,18 +1,18 @@
 [
   {
     "path": "dist/index.cjs",
-    "limit": "2.3 KB",
+    "limit": "2.4 KB",
     "webpack": false,
     "running": false
   },
   {
     "path": "dist/index.cjs",
-    "limit": "2.1 KB",
+    "limit": "2.2 KB",
     "import": "{ GChart }"
   },
   {
     "path": "dist/index.js",
-    "limit": "1.95 KB",
+    "limit": "2 KB",
     "import": "{ GChart }"
   }
 ]
