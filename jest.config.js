@@ -4,12 +4,17 @@ module.exports = {
   moduleFileExtensions: ['js', 'ts', 'vue'],
   transform: {
     '^.+\\.vue$': '@vue/vue2-jest',
-    // TODO: replace with @swc/jest after code migration to typescript
-    '\\.js$': [
-      'babel-jest',
+    '^.+\\.(t|j)sx?$': [
+      '@swc/jest',
       {
-        presets: ['@vue/cli-plugin-babel/preset'],
-        plugins: ['babel-plugin-transform-import-meta'],
+        module: {
+          type: 'commonjs',
+        },
+        env: {
+          targets: {
+            node: 12,
+          },
+        },
       },
     ],
   },

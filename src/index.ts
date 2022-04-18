@@ -1,9 +1,11 @@
-import loadGoogleCharts from './lib/google-charts-loader';
+import Vue from 'vue';
+
+import { loadGoogleCharts } from './lib/google-charts-loader';
 import GChart from './components/GChart.vue';
 
 // Install the components
-export function install(Vue) {
-  Vue.component('GChart', GChart);
+export function install(vue: typeof Vue) {
+  vue.component('GChart', GChart);
 }
 
 // Expose the components
@@ -14,8 +16,7 @@ export { loadGoogleCharts, GChart };
 
 // Plugin
 const plugin = {
-  /* eslint-disable no-undef */
-  version: import.meta.env.VERSION,
+  version: process.env.version,
   install,
 };
 
