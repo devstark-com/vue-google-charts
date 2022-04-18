@@ -1,4 +1,17 @@
 {
+  "presets": [
+    [
+      "@vue/cli-plugin-babel/preset",
+      {
+        "modules": false,
+        "targets": {
+          "browsers": [
+            "last 2 versions"
+          ]
+        }
+      }
+    ]
+  ],
   "plugins": [
     [
       "module:@import-meta-env/babel",

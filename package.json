@@ -26,7 +26,8 @@
     "postpublish": "del ./package",
     "build": "rollup -c",
     "lint": "eslint --ext .js,.vue src",
-    "test": "pnpm lint",
+    "unit": "jest -c jest.config.js",
+    "test": "pnpm lint && pnpm unit",
     "format": "prettier --write src rollup.config.js",
     "test:size": "size-limit",
     "commit": "cz",
@@ -64,8 +65,13 @@
     "@storybook/vue": "^6.4.20",
     "@swc/core": "^1.2.124",
     "@swc/helpers": "^0.3.2",
+    "@vue/cli-plugin-babel": "^5.0.4",
     "@vue/compiler-sfc": "^3.2.26",
+    "@vue/test-utils": "1",
+    "@vue/vue2-jest": "^27.0.0-alpha.4",
+    "babel-jest": "^27.5.1",
     "babel-loader": "^8.2.4",
+    "babel-plugin-transform-import-meta": "^2.1.1",
     "browserslist": "^4.19.1",
     "clean-publish": "^3.4.5",
     "commitizen": "^4.2.4",
@@ -74,6 +80,7 @@
     "eslint": "^8.5.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-vue": "^8.2.0",
+    "jest": "^27.5.1",
     "nano-staged": "^0.5.0",
     "prettier": "^2.5.1",
     "rollup": "^2.62.0",
@@ -83,9 +90,9 @@
     "simple-github-release": "^1.0.0",
     "size-limit": "^7.0.8",
     "standard-version": "^9.3.2",
-    "vue": "^2.6.8",
+    "vue": "^2.6.14",
     "vue-loader": "15.9.8",
-    "vue-template-compiler": "^2.1.6"
+    "vue-template-compiler": "^2.6.14"
   },
   "pnpm": {
     "overrides": {
