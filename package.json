@@ -22,8 +22,11 @@
     "module": "./dist/index.js",
     "directory": "package"
   },
+  "files": [
+    "dist/"
+  ],
   "scripts": {
-    "prepublishOnly": "pnpm build && del ./package && clean-publish",
+    "prepublishOnly": "pnpm test && pnpm build && del ./package && clean-publish",
     "postpublish": "del ./package",
     "emitDeclarations": "tsc --emitDeclarationOnly",
     "build": "rollup -c & pnpm emitDeclarations",

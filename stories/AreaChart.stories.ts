@@ -1,25 +1,26 @@
-import { GChart } from 'vue-google-charts';
+import { GChart } from '../src/index';
 
 const defaultArgs = {
-  type: 'LineChart',
+  type: 'AreaChart',
   chartData: [
     ['Year', 'Sales', 'Expenses'],
-    ['2004', 1000, 400],
-    ['2005', 1170, 460],
-    ['2006', 660, 1120],
-    ['2007', 1030, 540],
+    ['2013', 1000, 400],
+    ['2014', 1170, 460],
+    ['2015', 660, 1120],
+    ['2016', 1030, 540],
   ],
   chartOptions: {
     title: 'Company Performance',
-    curveType: 'function',
-    legend: { position: 'bottom' },
+    hAxis: { title: 'Year', titleTextStyle: { color: '#333' } },
+    vAxis: { minValue: 0 },
+    chartArea: { width: '50%', height: '70%' },
     width: 800,
     height: 600,
   },
 };
 
 export default {
-  title: 'LineChart',
+  title: 'AreaChart',
   component: GChart,
   parameters: {
     layout: 'centered',
@@ -33,5 +34,5 @@ const Template = (_, { argTypes }) => ({
   template: '<GChart :type="type" :data="chartData" :options="chartOptions"/>',
 });
 
-export const DefaultLineChart = Template.bind({});
-DefaultLineChart.args = { ...defaultArgs };
+export const DefaultAreaChart = Template.bind({});
+DefaultAreaChart.args = { ...defaultArgs };

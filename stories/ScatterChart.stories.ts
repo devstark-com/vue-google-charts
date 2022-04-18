@@ -1,26 +1,29 @@
-import { GChart } from 'vue-google-charts';
+import { GChart } from '../src/index';
 
 const defaultArgs = {
-  type: 'Table',
+  type: 'ScatterChart',
   chartData: [
-    ['Name', 'Salary', 'Full time employee'],
-    ['Mike', { v: 10000, f: '$10,000' }, true],
-    ['Jim', { v: 8000, f: '$8,000' }, false],
-    ['Alice', { v: 12500, f: '$12,500' }, true],
-    ['Bob', { v: 7000, f: '$7,000' }, true],
+    ['Year', 'Sales', 'Expenses'],
+    ['2004', 1000, 400],
+    ['2005', 1170, 460],
+    ['2006', 660, 1120],
+    ['2008', 1030, 540],
+    ['2009', 1000, 400],
+    ['2010', 1170, 460],
+    ['2011', 660, 1120],
+    ['2012', 1030, 540],
   ],
   chartOptions: {
     title: 'Company Performance',
     curveType: 'function',
     legend: { position: 'bottom' },
-    pageSize: 1,
     width: 800,
     height: 600,
   },
 };
 
 export default {
-  title: 'Table',
+  title: 'ScatterChart',
   component: GChart,
   parameters: {
     layout: 'centered',
@@ -34,5 +37,5 @@ const Template = (_, { argTypes }) => ({
   template: '<GChart :type="type" :data="chartData" :options="chartOptions"/>',
 });
 
-export const DefaultTable = Template.bind({});
-DefaultTable.args = { ...defaultArgs };
+export const DefaultScatterChart = Template.bind({});
+DefaultScatterChart.args = { ...defaultArgs };

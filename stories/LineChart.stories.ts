@@ -1,17 +1,13 @@
-import { GChart } from 'vue-google-charts';
+import { GChart } from '../src/index';
 
 const defaultArgs = {
-  type: 'ScatterChart',
+  type: 'LineChart',
   chartData: [
     ['Year', 'Sales', 'Expenses'],
     ['2004', 1000, 400],
     ['2005', 1170, 460],
     ['2006', 660, 1120],
-    ['2008', 1030, 540],
-    ['2009', 1000, 400],
-    ['2010', 1170, 460],
-    ['2011', 660, 1120],
-    ['2012', 1030, 540],
+    ['2007', 1030, 540],
   ],
   chartOptions: {
     title: 'Company Performance',
@@ -23,7 +19,7 @@ const defaultArgs = {
 };
 
 export default {
-  title: 'ScatterChart',
+  title: 'LineChart',
   component: GChart,
   parameters: {
     layout: 'centered',
@@ -37,5 +33,5 @@ const Template = (_, { argTypes }) => ({
   template: '<GChart :type="type" :data="chartData" :options="chartOptions"/>',
 });
 
-export const DefaultScatterChart = Template.bind({});
-DefaultScatterChart.args = { ...defaultArgs };
+export const DefaultLineChart = Template.bind({});
+DefaultLineChart.args = { ...defaultArgs };
