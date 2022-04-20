@@ -7,7 +7,7 @@ module.exports = {
   webpackFinal: async config => {
     config.resolve.alias['vue-google-charts'] = path.resolve(
       __dirname,
-      '../src/index.js'
+      '../src/index.ts'
     );
     return config;
   },

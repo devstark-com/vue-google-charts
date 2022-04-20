@@ -1,25 +1,26 @@
-import { GChart } from 'vue-google-charts';
+import { GChart } from '../src';
 
 const defaultArgs = {
-  type: 'LineChart',
+  type: 'Table',
   chartData: [
-    ['Year', 'Sales', 'Expenses'],
-    ['2004', 1000, 400],
-    ['2005', 1170, 460],
-    ['2006', 660, 1120],
-    ['2007', 1030, 540],
+    ['Name', 'Salary', 'Full time employee'],
+    ['Mike', { v: 10000, f: '$10,000' }, true],
+    ['Jim', { v: 8000, f: '$8,000' }, false],
+    ['Alice', { v: 12500, f: '$12,500' }, true],
+    ['Bob', { v: 7000, f: '$7,000' }, true],
   ],
   chartOptions: {
     title: 'Company Performance',
     curveType: 'function',
     legend: { position: 'bottom' },
+    pageSize: 1,
     width: 800,
     height: 600,
   },
 };
 
 export default {
-  title: 'LineChart',
+  title: 'Table',
   component: GChart,
   parameters: {
     layout: 'centered',
@@ -33,5 +34,5 @@ const Template = (_, { argTypes }) => ({
   template: '<GChart :type="type" :data="chartData" :options="chartOptions"/>',
 });
 
-export const DefaultLineChart = Template.bind({});
-DefaultLineChart.args = { ...defaultArgs };
+export const DefaultTable = Template.bind({});
+DefaultTable.args = { ...defaultArgs };

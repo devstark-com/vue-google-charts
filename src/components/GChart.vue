@@ -3,7 +3,8 @@
 </template>
 
 <script>
-import loadGoogleCharts from '../lib/google-charts-loader';
+import { loadGoogleCharts } from '../lib/google-charts-loader';
+
 import debounce from 'debounce';
 
 let chartsLib = null;

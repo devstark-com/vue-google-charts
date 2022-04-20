@@ -1,8 +1,8 @@
 import { shallowMount } from '@vue/test-utils';
 
-import { GChart } from '../src/index.js';
+import { GChart } from '../src';
 
-describe('Table', () => {
+describe('CandlestickChart', () => {
   const Component = {
     template:
       '<div><GChart :type="type" :data="data" :options="options"/></div>',
@@ -10,21 +10,19 @@ describe('Table', () => {
     props: ['type', 'data', 'options'],
   };
 
-  const type = 'Table';
+  const type = 'CandlestickChart';
 
   const data = [
-    ['Name', 'Salary', 'Full time employee'],
-    ['Mike', { v: 10000, f: '$10,000' }, true],
-    ['Jim', { v: 8000, f: '$8,000' }, false],
-    ['Alice', { v: 12500, f: '$12,500' }, true],
-    ['Bob', { v: 7000, f: '$7,000' }, true],
+    ['day', 'a', 'b', 'c', 'd'],
+    ['Mon', 20, 28, 38, 45],
+    ['Tue', 31, 38, 55, 66],
+    ['Wed', 50, 55, 77, 80],
+    ['Thu', 50, 77, 66, 77],
+    ['Fri', 15, 66, 22, 68],
   ];
 
   const options = {
-    title: 'Company Performance',
-    curveType: 'function',
-    legend: { position: 'bottom' },
-    pageSize: 1,
+    legend: 'none',
     width: 800,
     height: 600,
   };

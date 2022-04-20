@@ -1,8 +1,8 @@
 import { shallowMount } from '@vue/test-utils';
 
-import { GChart } from '../src/index.js';
+import { GChart } from '../src';
 
-describe('PieChart', () => {
+describe('ScatterChart', () => {
   const Component = {
     template:
       '<div><GChart :type="type" :data="data" :options="options"/></div>',
@@ -10,19 +10,24 @@ describe('PieChart', () => {
     props: ['type', 'data', 'options'],
   };
 
-  const type = 'PieChart';
+  const type = 'ScatterChart';
 
   const data = [
-    ['Task', 'Hours per Day'],
-    ['Work', 11],
-    ['Eat', 2],
-    ['Commute', 2],
-    ['Watch TV', 2],
-    ['Sleep', 7],
+    ['Year', 'Sales', 'Expenses'],
+    ['2004', 1000, 400],
+    ['2005', 1170, 460],
+    ['2006', 660, 1120],
+    ['2008', 1030, 540],
+    ['2009', 1000, 400],
+    ['2010', 1170, 460],
+    ['2011', 660, 1120],
+    ['2012', 1030, 540],
   ];
 
   const options = {
-    title: 'My Daily Activities',
+    title: 'Company Performance',
+    curveType: 'function',
+    legend: { position: 'bottom' },
     width: 800,
     height: 600,
   };

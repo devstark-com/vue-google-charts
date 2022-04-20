@@ -1,8 +1,8 @@
 import { shallowMount } from '@vue/test-utils';
 
-import { GChart } from '../src/index.js';
+import { GChart } from '../src';
 
-describe('ColumnChart', () => {
+describe('Table', () => {
   const Component = {
     template:
       '<div><GChart :type="type" :data="data" :options="options"/></div>',
@@ -10,21 +10,21 @@ describe('ColumnChart', () => {
     props: ['type', 'data', 'options'],
   };
 
-  const type = 'ColumnChart';
+  const type = 'Table';
 
   const data = [
-    ['Year', 'Sales', 'Expenses', 'Profit'],
-    ['2014', 1000, 400, 200],
-    ['2015', 1170, 460, 250],
-    ['2016', 660, 1120, 300],
-    ['2017', 1030, 540, 350],
+    ['Name', 'Salary', 'Full time employee'],
+    ['Mike', { v: 10000, f: '$10,000' }, true],
+    ['Jim', { v: 8000, f: '$8,000' }, false],
+    ['Alice', { v: 12500, f: '$12,500' }, true],
+    ['Bob', { v: 7000, f: '$7,000' }, true],
   ];
 
   const options = {
-    chart: {
-      title: 'Company Performance',
-      subtitle: 'Sales, Expenses, and Profit: 2014-2017',
-    },
+    title: 'Company Performance',
+    curveType: 'function',
+    legend: { position: 'bottom' },
+    pageSize: 1,
     width: 800,
     height: 600,
   };

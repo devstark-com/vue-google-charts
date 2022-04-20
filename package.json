@@ -15,21 +15,27 @@
   "bugs": {
     "url": "https://github.com/devstark-com/vue-google-charts/issues"
   },
-  "main": "./src/index.js",
+  "main": "./src/index.ts",
+  "types": "./dist/index.d.ts",
   "publishConfig": {
     "main": "./dist/index.cjs",
     "module": "./dist/index.js",
     "directory": "package"
   },
+  "files": [
+    "dist/"
+  ],
   "scripts": {
-    "prepublishOnly": "pnpm build && del ./package && clean-publish",
+    "prepublishOnly": "pnpm test && pnpm build && del ./package && clean-publish",
     "postpublish": "del ./package",
-    "build": "rollup -c",
+    "emitDeclarations": "tsc --emitDeclarationOnly",
+    "build": "rollup -c & pnpm emitDeclarations",
     "lint": "eslint --ext .js,.vue src",
     "unit": "jest -c jest.config.js",
     "test": "pnpm lint && pnpm unit",
     "format": "prettier --write src rollup.config.js",
     "test:size": "size-limit",
+    "test:typings": "tsd",
     "commit": "cz",
     "bumpVersion": "standard-version",
     "createGithubRelease": "simple-github-release",
@@ -56,7 +62,6 @@
     "@commitlint/cli": "^16.0.0",
     "@commitlint/config-conventional": "^16.0.0",
     "@commitlint/cz-commitlint": "^16.0.0",
-    "@import-meta-env/babel": "^0.1.9",
     "@rollup/plugin-node-resolve": "^13.1.1",
     "@rollup/plugin-replace": "^3.0.1",
     "@size-limit/preset-big-lib": "^7.0.8",
@@ -65,13 +70,14 @@
     "@storybook/vue": "^6.4.20",
     "@swc/core": "^1.2.124",
     "@swc/helpers": "^0.3.2",
+    "@swc/jest": "^0.2.20",
+    "@types/jest": "^27.4.1",
     "@vue/cli-plugin-babel": "^5.0.4",
     "@vue/compiler-sfc": "^3.2.26",
     "@vue/test-utils": "1",
     "@vue/vue2-jest": "^27.0.0-alpha.4",
     "babel-jest": "^27.5.1",
     "babel-loader": "^8.2.4",
-    "babel-plugin-transform-import-meta": "^2.1.1",
     "browserslist": "^4.19.1",
     "clean-publish": "^3.4.5",
     "commitizen": "^4.2.4",
@@ -90,6 +96,8 @@
     "simple-github-release": "^1.0.0",
     "size-limit": "^7.0.8",
     "standard-version": "^9.3.2",
+    "tsd": "^0.20.0",
+    "typescript": "^4.6.3",
     "vue": "^2.6.14",
     "vue-loader": "15.9.8",
     "vue-template-compiler": "^2.6.14"
@@ -98,5 +106,9 @@
     "overrides": {
       "puppeteer-core": "13.2.0"
     }
-  }
+  },
+  "tsd": {
+    "directory": "./test"
+  },
+  "readme": ""
 }

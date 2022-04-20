@@ -1,4 +1,4 @@
-import { GChart } from 'vue-google-charts';
+import { GChart } from '../src';
 
 const defaultArgs = {
   type: 'CandlestickChart',

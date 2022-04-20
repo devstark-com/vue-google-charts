@@ -1,8 +1,8 @@
 import { shallowMount } from '@vue/test-utils';
 
-import { GChart } from '../src/index.js';
+import { GChart } from '../src';
 
-describe('SteppedAreaChart', () => {
+describe('BarChart', () => {
   const Component = {
     template:
       '<div><GChart :type="type" :data="data" :options="options"/></div>',
@@ -10,20 +10,27 @@ describe('SteppedAreaChart', () => {
     props: ['type', 'data', 'options'],
   };
 
-  const type = 'SteppedAreaChart';
+  const type = 'BarChart';
 
   const data = [
-    ['Director (Year)', 'Rotten Tomatoes', 'IMDB'],
-    ['Alfred Hitchcock (1935)', 8.4, 7.9],
-    ['Ralph Thomas (1959)', 6.9, 6.5],
-    ['Don Sharp (1978)', 6.5, 6.4],
-    ['James Hawes (2008)', 4.4, 6.2],
+    ['City', '2010 Population', '2000 Population'],
+    ['New York City, NY', 8175000, 8008000],
+    ['Los Angeles, CA', 3792000, 3694000],
+    ['Chicago, IL', 2695000, 2896000],
+    ['Houston, TX', 2099000, 1953000],
+    ['Philadelphia, PA', 1526000, 1517000],
   ];
 
   const options = {
-    title: "The decline of 'The 39 Steps'",
-    vAxis: { title: 'Accumulated Rating' },
-    isStacked: true,
+    title: 'Population of Largest U.S. Cities',
+    chartArea: { width: '50%' },
+    hAxis: {
+      title: 'Total Population',
+      minValue: 0,
+    },
+    vAxis: {
+      title: 'City',
+    },
     width: 800,
     height: 600,
   };

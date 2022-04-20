@@ -1,8 +1,8 @@
 import { shallowMount } from '@vue/test-utils';
 
-import { GChart } from '../src/index.js';
+import { GChart } from '../src';
 
-describe('CandlestickChart', () => {
+describe('ColumnChart', () => {
   const Component = {
     template:
       '<div><GChart :type="type" :data="data" :options="options"/></div>',
@@ -10,19 +10,21 @@ describe('CandlestickChart', () => {
     props: ['type', 'data', 'options'],
   };
 
-  const type = 'CandlestickChart';
+  const type = 'ColumnChart';
 
   const data = [
-    ['day', 'a', 'b', 'c', 'd'],
-    ['Mon', 20, 28, 38, 45],
-    ['Tue', 31, 38, 55, 66],
-    ['Wed', 50, 55, 77, 80],
-    ['Thu', 50, 77, 66, 77],
-    ['Fri', 15, 66, 22, 68],
+    ['Year', 'Sales', 'Expenses', 'Profit'],
+    ['2014', 1000, 400, 200],
+    ['2015', 1170, 460, 250],
+    ['2016', 660, 1120, 300],
+    ['2017', 1030, 540, 350],
   ];
 
   const options = {
-    legend: 'none',
+    chart: {
+      title: 'Company Performance',
+      subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+    },
     width: 800,
     height: 600,
   };

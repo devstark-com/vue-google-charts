@@ -1,8 +1,18 @@
-import { GChart } from 'vue-google-charts';
+import { shallowMount } from '@vue/test-utils';
 
-const defaultArgs = {
-  type: 'BubbleChart',
-  chartData: [
+import { GChart } from '../src';
+
+describe('BubbleChart', () => {
+  const Component = {
+    template:
+      '<div><GChart :type="type" :data="data" :options="options"/></div>',
+    components: { GChart },
+    props: ['type', 'data', 'options'],
+  };
+
+  const type = 'BubbleChart';
+
+  const data = [
     ['ID', 'Life Expectancy', 'Fertility Rate', 'Region', 'Population'],
     ['CAN', 80.66, 1.67, 'North America', 33739900],
     ['DEU', 79.84, 1.36, 'Europe', 81902307],
@@ -14,8 +24,9 @@ const defaultArgs = {
     ['ISR', 81.55, 2.96, 'Middle East', 7485600],
     ['RUS', 68.6, 1.54, 'Europe', 141850000],
     ['USA', 78.09, 2.05, 'North America', 307007000],
-  ],
-  chartOptions: {
+  ];
+
+  const options = {
     title:
       'Correlation between life expectancy, fertility rate ' +
       'and population of some world countries (2010)',
@@ -24,23 +35,19 @@ const defaultArgs = {
     bubble: { textStyle: { fontSize: 11 } },
     width: 800,
     height: 600,
-  },
-};
+  };
 
-export default {
-  title: 'BubbleChart',
-  component: GChart,
-  parameters: {
-    layout: 'centered',
-  },
-  args: defaultArgs,
-};
+  it('should render a chart', () => {
+    const wrapper = shallowMount(Component, {
+      propsData: {
+        type,
+        data,
+        options,
+      },
+    });
 
-const Template = (_, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: { GChart },
-  template: '<GChart :type="type" :data="chartData" :options="chartOptions"/>',
+    const chart = wrapper.find('gchart-stub');
+    expect(chart.attributes('type')).toBe(type);
+    expect(chart.attributes('data')).toBe(data.flat().join(','));
+  });
 });
-
-export const DefaultBubbleChart = Template.bind({});
-DefaultBubbleChart.args = { ...defaultArgs };
