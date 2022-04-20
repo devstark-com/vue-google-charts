@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
 
-import { GChart } from '../src/index';
+import { GChart } from '../src';
 
 describe('AreaChart', () => {
   const Component = {

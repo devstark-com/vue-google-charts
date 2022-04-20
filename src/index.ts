@@ -16,7 +16,7 @@ export { loadGoogleCharts, GChart };
 
 // Plugin
 const plugin = {
-  version: process.env.version,
+  version: process.env.VERSION,
   install,
 };
 

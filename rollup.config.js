@@ -14,7 +14,7 @@ const plugins = (targets, vueOptions = {}) => [
   replace({
     preventAssignment: true,
     values: {
-      'process.env.version': JSON.stringify(pkg.version),
+      'process.env.VERSION': JSON.stringify(pkg.version),
     },
   }),
   swc({

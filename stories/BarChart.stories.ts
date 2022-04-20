@@ -1,4 +1,4 @@
-import { GChart } from '../src/index';
+import { GChart } from '../src';
 
 const defaultArgs = {
   type: 'BarChart',

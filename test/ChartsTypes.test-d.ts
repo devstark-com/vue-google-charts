@@ -1,6 +1,6 @@
 //TODO: tune after migrate to Vue3
 import Vue from 'vue';
-import { GChart } from '../src/index';
+import { GChart } from '../src';
 
 import { GoogleViz } from '../src/types';
 
