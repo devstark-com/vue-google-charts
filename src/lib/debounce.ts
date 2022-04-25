@@ -2,14 +2,7 @@ export interface DebouncedFunction<
   Args extends any[],
   F extends (...args: Args) => any
 > {
-  (this: ThisParameterType<F>, ...args: Args & Parameters<F>): Promise<
-    ReturnType<F>
-  >;
-}
-
-interface DebouncedPromise<FunctionReturn> {
-  resolve: (result: FunctionReturn) => void;
-  reject: (reason?: any) => void;
+  (this: ThisParameterType<F>, ...args: Args & Parameters<F>): void;
 }
 
 export function debounce<Args extends any[], F extends (...args: Args) => any>(
@@ -17,9 +10,6 @@ export function debounce<Args extends any[], F extends (...args: Args) => any>(
   waitMilliseconds = 50
 ): DebouncedFunction<Args, F> {
   let timeoutId: ReturnType<typeof setTimeout> | undefined;
-
-  let promises: DebouncedPromise<ReturnType<F>>[] = [];
-
   function nextInvokeTimeout() {
     return waitMilliseconds;
   }
@@ -29,23 +19,18 @@ export function debounce<Args extends any[], F extends (...args: Args) => any>(
     ...args: Parameters<F>
   ) {
     const context = this;
-    return new Promise<ReturnType<F>>((resolve, reject) => {
-      const invokeFunction = function () {
-        timeoutId = undefined;
 
-        const result = func.apply(context, args);
-        promises.forEach(({ resolve }) => resolve(result));
-        promises = [];
-      };
+    const invokeFunction = function () {
+      timeoutId = undefined;
 
-      if (timeoutId !== undefined) {
-        clearTimeout(timeoutId);
-      }
+      func.apply(context, args);
+    };
 
-      timeoutId = setTimeout(invokeFunction, nextInvokeTimeout());
+    if (timeoutId !== undefined) {
+      clearTimeout(timeoutId);
+    }
 
-      promises.push({ resolve, reject });
-    });
+    timeoutId = setTimeout(invokeFunction, nextInvokeTimeout());
   };
 
   return debouncedFunction;
