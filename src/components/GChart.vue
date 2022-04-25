@@ -4,8 +4,7 @@
 
 <script>
 import { loadGoogleCharts } from '../lib/google-charts-loader';
-
-import debounce from 'debounce';
+import { debounce } from '../lib/debounce';
 
 let chartsLib = null;
 export default {
