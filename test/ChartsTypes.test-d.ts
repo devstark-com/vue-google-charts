@@ -26,7 +26,7 @@ const options = {
   height: 600,
 };
 
-Vue.component('line-chart', {
+Vue.component('LineChart', {
   render: function (createElement) {
     return createElement(GChart, {
       props: {

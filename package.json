@@ -31,11 +31,11 @@
     "emitDeclarations": "tsc --emitDeclarationOnly",
     "build": "rollup -c & pnpm emitDeclarations",
     "lint": "eslint --ext .js,.vue src",
-    "unit": "jest -c jest.config.js",
-    "test": "pnpm lint && pnpm unit",
     "format": "prettier --write src rollup.config.js",
     "test:size": "size-limit",
     "test:typings": "tsd",
+    "test:unit": "jest -c jest.config.js",
+    "test": "pnpm lint && pnpm test:unit",
     "commit": "cz",
     "bumpVersion": "standard-version",
     "createGithubRelease": "simple-github-release",
@@ -54,9 +54,6 @@
   "peerDependencies": {
     "vue": "^2.6.0"
   },
-  "dependencies": {
-    "debounce": "^1.1.0"
-  },
   "devDependencies": {
     "@babel/core": "^7.17.9",
     "@commitlint/cli": "^16.0.0",
@@ -74,6 +71,7 @@
     "@types/jest": "^27.4.1",
     "@vue/cli-plugin-babel": "^5.0.4",
     "@vue/compiler-sfc": "^3.2.26",
+    "@vue/eslint-config-typescript": "^10.0.0",
     "@vue/test-utils": "1",
     "@vue/vue2-jest": "^27.0.0-alpha.4",
     "babel-jest": "^27.5.1",
@@ -85,13 +83,15 @@
     "del-cli": "^4.0.1",
     "eslint": "^8.5.0",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-prettier-vue": "^3.1.0",
     "eslint-plugin-vue": "^8.2.0",
     "jest": "^27.5.1",
     "nano-staged": "^0.5.0",
     "prettier": "^2.5.1",
     "rollup": "^2.62.0",
     "rollup-plugin-swc": "^0.2.0",
-    "rollup-plugin-vue": "^5.0.0",
+    "rollup-plugin-vue2": "^0.8.1",
     "simple-git-hooks": "^2.7.0",
     "simple-github-release": "^1.0.0",
     "size-limit": "^7.0.8",
