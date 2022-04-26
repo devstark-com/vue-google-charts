@@ -40,11 +40,11 @@ export default {
 }
 ```
 
-## Browser
+## Standalone Mode with CDN
 
 ```html
-<script src="vue.js"></script>
-<script src="vue-google-charts/dist/vue-google-charts.browser.js"></script>
+<script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-google-charts@latest/dist/vue-google-charts.browser.js"></script>
 ```
 
 The plugin should be auto-installed. If not, you can install it manually with the instructions below.
