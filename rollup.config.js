@@ -3,6 +3,7 @@ import swc from 'rollup-plugin-swc';
 import replace from '@rollup/plugin-replace';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import pkg from './package.json';
+import legacyPkg from './legacy/package.json';
 
 const extensions = ['.js', '.ts'];
 const external = _ => /node_modules/.test(_) && !/@swc\/helpers/.test(_);
@@ -50,6 +51,31 @@ export default [
     output: {
       format: 'cjs',
       file: pkg.publishConfig.main,
+      exports: 'named',
+      sourcemap: true,
+    },
+  },
+  {
+    input: legacyPkg.main,
+    plugins: plugins('defaults and supports es6-module'),
+    external,
+    output: {
+      format: 'es',
+      file: legacyPkg.publishConfig.module,
+      sourcemap: true,
+    },
+  },
+  {
+    input: legacyPkg.main,
+    plugins: plugins('defaults, not ie 11, not ie_mob 11', {
+      template: {
+        optimizeSSR: true,
+      },
+    }),
+    external,
+    output: {
+      format: 'cjs',
+      file: legacyPkg.publishConfig.main,
       exports: 'named',
       sourcemap: true,
     },
