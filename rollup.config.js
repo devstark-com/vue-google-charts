@@ -1,4 +1,4 @@
-import vue from 'rollup-plugin-vue';
+import vue from 'rollup-plugin-vue2';
 import swc from 'rollup-plugin-swc';
 import replace from '@rollup/plugin-replace';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
