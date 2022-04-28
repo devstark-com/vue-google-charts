@@ -1,11 +1,13 @@
-import Vue from 'vue';
+import { createApp } from 'vue';
 
 import { loadGoogleCharts } from './lib/google-charts-loader';
-import GChart from './components/GChart.vue';
+import { GChart } from './components/GChart';
+
+const app = createApp({});
 
 // Install the components
-export function install(vue: typeof Vue) {
-  vue.component('GChart', GChart);
+export function install() {
+  app.component('GChart', GChart);
 }
 
 // Expose the components
@@ -26,9 +28,8 @@ export default plugin;
 let GlobalVue = null;
 if (typeof window !== 'undefined') {
   GlobalVue = window.Vue;
-} else if (typeof global !== 'undefined') {
-  GlobalVue = global.Vue;
 }
-if (GlobalVue) {
-  GlobalVue.use(plugin);
+
+if (GlobalVue !== null && GlobalVue !== undefined) {
+  app.use(plugin);
 }

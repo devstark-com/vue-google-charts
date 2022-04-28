@@ -5,6 +5,7 @@ export type GoogleViz = {
     ChartWrapper: GoogleChartWrapper;
     ChartEditor: GoogleChartEditor;
     DataTable: GoogleDataTable;
+    DataView: GoogleDataView;
     events: GoogleVizEvents;
     arrayToDataTable: GoogleArrayToDataTable;
     drawToolbar: GoogleVizDrawToolbar;
@@ -22,7 +23,10 @@ export type GoogleChartLoader = {
 
 export type GoogleChartWrapper = {
   new (chartWrapperOptions: Partial<ChartWrapperOptions>): GoogleChartWrapper;
-  draw: (chartArgs?: ChartWrapperProps) => any;
+  draw: (
+    data: GoogleDataTable | GoogleDataView,
+    options: GoogleChartOptions
+  ) => any;
   toJSON: () => string;
   clone: () => GoogleChartWrapper;
   getDataSourceUrl: () => string;
@@ -401,3 +405,143 @@ export type GoogleChartPackages =
   | 'wordtree';
 
 export type GoogleChartTicks = (number | Date)[];
+
+export type GoogleChartOptions = {
+  width?: number;
+  height?: number;
+  is3D?: boolean;
+  backgroundColor: string;
+
+  title?: string;
+  hAxis?: {
+    minValue?: any;
+    maxValue?: any;
+    ticks?: GoogleChartTicks;
+    title?: string;
+    viewWindow?: { max?: any; min?: any; [otherOptionKey: string]: any };
+    [otherOptionKey: string]: any;
+  };
+  vAxis?: {
+    minValue?: any;
+    maxValue?: any;
+    ticks?: GoogleChartTicks;
+    title?: string;
+    viewWindow?: { max?: any; min?: any; [otherOptionKey: string]: any };
+    [otherOptionKey: string]: any;
+  };
+  bubble?: {};
+  pieHole?: number;
+  redFrom?: number;
+  redTo?: number;
+  yellowFrom?: number;
+  yellowTo?: number;
+  minorTicks?: number;
+  legend?:
+    | string
+    | {
+        position?: string;
+        maxLines?: number;
+        [otherOptionKey: string]: any;
+      };
+  curveType?: string;
+  showTooltip?: boolean;
+  showInfoWindow?: boolean;
+  allowHtml?: boolean;
+  isStacked?: string | boolean;
+  minColor?: string;
+  midColor?: string;
+  maxColor?: string;
+  headerHeight?: number;
+  fontColor?: string;
+  showScale?: boolean;
+  bar?: { groupWidth?: string }; // Remove space between bars.
+  candlestick?: {
+    fallingColor?: { strokeWidth?: number; fill?: string }; // red
+    risingColor?: { strokeWidth?: number; fill?: string }; // green
+    [otherOptionKey: string]: any;
+  };
+  wordtree?: {
+    format?: string;
+    word?: string;
+    [otherOptionKey: string]: any;
+  };
+  [otherOptionKey: string]: any;
+};
+
+export type GoogleDataView = {
+  new (dataParam: any): GoogleDataView;
+  getColumnId(columnIndex: number): String;
+  getColumnLabel(columnIndex: number): string;
+  getColumnPattern(columnIndex: number): string;
+  getColumnProperty(columnIndex: number, name: string): any;
+  getColumnRange(columnIndex: number): { min: any; max: any };
+  getColumnType(columnIndex: number): string;
+  getDistinctValues(columnIndex: number): any[];
+  getFilteredRows(filters: DataTableCellFilter[]): number[];
+  getFormattedValue(rowIndex: number, columnIndex: number): string;
+  getNumberOfColumns(): number;
+  getNumberOfRows(): number;
+  getProperty(rowIndex: number, columnIndex: number, name: string): any;
+  getProperties(rowIndex: number, columnIndex: number): Properties;
+  getRowProperty(rowIndex: number, name: string): any;
+  getSortedRows(sortColumn: number): number[];
+  getSortedRows(sortColumn: SortByColumn): number[];
+  getSortedRows(sortColumns: number[]): number[];
+  getSortedRows(sortColumns: SortByColumn[]): number[];
+  getTableProperty(name: string): any;
+  getValue(rowIndex: number, columnIndex: number): any;
+  getTableColumnIndex(viewColumnIndex: number): number;
+  getTableRowIndex(viewRowIndex: number): number;
+  getViewColumnIndex(tableColumnIndex: number): number;
+  getViewColumns(): number[];
+  getViewColumns(): ColumnSpec[];
+  getViewRowIndex(tableRowIndex: number): number;
+  getViewRows(): number[];
+
+  hideColumns(columnIndexes: number[]): void;
+  hideRows(min: number, max: number): void;
+  hideRows(rowIndexes: number[]): void;
+
+  setColumns(columnIndexes: number[]): void;
+  setColumns(columnIndexes: ColumnSpec[]): void;
+  setColumns(columnIndexes: any[]): void;
+  setRows(min: number, max: number): void;
+  setRows(rowIndexes: number[]): void;
+
+  toDataTable(): GoogleDataTable;
+  toJSON(): string;
+};
+
+export interface DataTableCellFilter {
+  column: number;
+  value?: any;
+  minValue?: any;
+  maxValue?: any;
+  test?:
+    | ((
+        value: any,
+        row?: number,
+        column?: number,
+        data?: GoogleDataTable | GoogleDataView
+      ) => boolean)
+    | undefined;
+}
+
+export interface Properties {
+  [property: string]: any;
+}
+
+export interface SortByColumn {
+  column: number;
+  desc: boolean;
+}
+
+export interface ColumnSpec {
+  calc?: ((data: GoogleDataTable, row: number) => any) | undefined;
+  type?: string | undefined;
+  label?: string | undefined;
+  id?: string | undefined;
+  sourceColumn?: number | undefined;
+  properties?: Properties | undefined;
+  role?: string | undefined;
+}

@@ -9,16 +9,11 @@
  */
 
 import type {
+  GoogleViz,
   GoogleChartLoader,
   GoogleChartVersion,
-  GoogleChartPackages,
+  GoogleChartLoaderOptions,
 } from '../types';
-
-export interface ILoadGoogleChartsParams {
-  packages?: GoogleChartPackages[];
-  language?: string;
-  mapsApiKey?: string;
-}
 
 const chartsScriptUrl = 'https://www.gstatic.com/charts/loader.js';
 
@@ -75,15 +70,15 @@ export async function loadGoogleCharts(
     packages = ['corechart', 'controls'],
     language = 'en',
     mapsApiKey,
-  }: ILoadGoogleChartsParams
-): Promise<unknown> {
+  }: GoogleChartLoaderOptions
+): Promise<GoogleViz | undefined> {
   const loader = await getChartsLoader();
 
   const settingsKey = `${version}_${packages.join('_')}_${language}`;
 
   if (loadedPackages.has(settingsKey)) return loadedPackages.get(settingsKey);
 
-  const loaderPromise = new Promise(resolve => {
+  const loaderPromise: Promise<GoogleViz | undefined> = new Promise(resolve => {
     loader.load(version, {
       packages,
       language,
