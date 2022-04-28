@@ -9,6 +9,7 @@ specifiers:
   babel-jest: 27.5.1
   core-js: ^3.22.2
   jest: 27.5.1
+  rollup-plugin-vue2: ^0.8.1
   vue: 2.6.14
   vue-template-compiler: 2.6.14
 
@@ -21,6 +22,7 @@ devDependencies:
   babel-jest: 27.5.1_@babel+core@7.17.9
   core-js: 3.22.2
   jest: 27.5.1
+  rollup-plugin-vue2: 0.8.1
   vue: 2.6.14
   vue-template-compiler: 2.6.14
 
@@ -1439,6 +1441,10 @@ packages:
     engines: {node: '>=4.0'}
     dev: true
 
+  /estree-walker/0.6.1:
+    resolution: {integrity: sha512-SqmZANLWS0mnatqbSfRP5g8OXZC12Fgg1IwNtLsyHDzJizORW4khDfjPqJZsemPWBB2uqykUah5YpQ6epsqC/w==}
+    dev: true
+
   /esutils/2.0.3:
     resolution: {integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==}
     engines: {node: '>=0.10.0'}
@@ -2403,6 +2409,13 @@ packages:
       yallist: 4.0.0
     dev: true
 
+  /magic-string/0.26.1:
+    resolution: {integrity: sha512-ndThHmvgtieXe8J/VGPjG+Apu7v7ItcD5mhEIvOscWjPF/ccOiLxHaSuCAS2G+3x4GKsAbT8u7zdyamupui8Tg==}
+    engines: {node: '>=12'}
+    dependencies:
+      sourcemap-codec: 1.4.8
+    dev: true
+
   /make-dir/3.1.0:
     resolution: {integrity: sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw==}
     engines: {node: '>=8'}
@@ -2733,6 +2746,21 @@ packages:
       glob: 7.2.0
     dev: true
 
+  /rollup-plugin-vue2/0.8.1:
+    resolution: {integrity: sha512-cvPM7Jn6SBrevNVryszkB9oRcok0Sa2kbp1rM/mtrQFWwLSaTXQOapdP0RFJlqRB9xgvxBpnFnPLYbp7F7cXgw==}
+    dependencies:
+      magic-string: 0.26.1
+      rollup-pluginutils: 2.8.2
+      vue-template-compiler: 2.6.14
+      vue-template-es2015-compiler: 1.9.1
+    dev: true
+
+  /rollup-pluginutils/2.8.2:
+    resolution: {integrity: sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ==}
+    dependencies:
+      estree-walker: 0.6.1
+    dev: true
+
   /safe-buffer/5.1.2:
     resolution: {integrity: sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==}
     dev: true
@@ -2836,6 +2864,10 @@ packages:
   /source-map/0.7.3:
     resolution: {integrity: sha512-CkCj6giN3S+n9qrYiBTX5gystlENnRW5jZeNLHpe6aue+SrHcG5VYwujhW9s4dY31mEGsxBDrHR6oI69fTXsaQ==}
     engines: {node: '>= 8'}
+    dev: true
+
+  /sourcemap-codec/1.4.8:
+    resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
     dev: true
 
   /sprintf-js/1.0.3:
