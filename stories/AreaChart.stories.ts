@@ -2,14 +2,14 @@ import { GChart } from '../src';
 
 const defaultArgs = {
   type: 'AreaChart',
-  chartData: [
+  data: [
     ['Year', 'Sales', 'Expenses'],
     ['2013', 1000, 400],
     ['2014', 1170, 460],
     ['2015', 660, 1120],
     ['2016', 1030, 540],
   ],
-  chartOptions: {
+  options: {
     title: 'Company Performance',
     hAxis: { title: 'Year', titleTextStyle: { color: '#333' } },
     vAxis: { minValue: 0 },
@@ -28,10 +28,12 @@ export default {
   args: defaultArgs,
 };
 
-const Template = (_, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = args => ({
   components: { GChart },
-  template: '<GChart :type="type" :data="chartData" :options="chartOptions"/>',
+  setup() {
+    return { args };
+  },
+  template: '<GChart v-bind="args" />',
 });
 
 export const DefaultAreaChart = Template.bind({});

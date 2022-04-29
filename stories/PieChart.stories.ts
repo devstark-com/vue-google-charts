@@ -2,7 +2,7 @@ import { GChart } from '../src';
 
 const defaultArgs = {
   type: 'PieChart',
-  chartData: [
+  data: [
     ['Task', 'Hours per Day'],
     ['Work', 11],
     ['Eat', 2],
@@ -10,7 +10,7 @@ const defaultArgs = {
     ['Watch TV', 2],
     ['Sleep', 7],
   ],
-  chartOptions: {
+  options: {
     title: 'My Daily Activities',
     width: 800,
     height: 600,
@@ -26,10 +26,12 @@ export default {
   args: defaultArgs,
 };
 
-const Template = (_, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = args => ({
   components: { GChart },
-  template: '<GChart :type="type" :data="chartData" :options="chartOptions"/>',
+  setup() {
+    return { args };
+  },
+  template: '<GChart v-bind="args" />',
 });
 
 export const DefaultPieChart = Template.bind({});

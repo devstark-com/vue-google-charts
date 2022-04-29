@@ -2,7 +2,7 @@ import { GChart } from '../src';
 
 const defaultArgs = {
   type: 'BubbleChart',
-  chartData: [
+  data: [
     ['ID', 'Life Expectancy', 'Fertility Rate', 'Region', 'Population'],
     ['CAN', 80.66, 1.67, 'North America', 33739900],
     ['DEU', 79.84, 1.36, 'Europe', 81902307],
@@ -15,7 +15,7 @@ const defaultArgs = {
     ['RUS', 68.6, 1.54, 'Europe', 141850000],
     ['USA', 78.09, 2.05, 'North America', 307007000],
   ],
-  chartOptions: {
+  options: {
     title:
       'Correlation between life expectancy, fertility rate ' +
       'and population of some world countries (2010)',
@@ -36,10 +36,12 @@ export default {
   args: defaultArgs,
 };
 
-const Template = (_, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = args => ({
   components: { GChart },
-  template: '<GChart :type="type" :data="chartData" :options="chartOptions"/>',
+  setup() {
+    return { args };
+  },
+  template: '<GChart v-bind="args" />',
 });
 
 export const DefaultBubbleChart = Template.bind({});

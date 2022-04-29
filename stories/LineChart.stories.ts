@@ -2,14 +2,14 @@ import { GChart } from '../src';
 
 const defaultArgs = {
   type: 'LineChart',
-  chartData: [
+  data: [
     ['Year', 'Sales', 'Expenses'],
     ['2004', 1000, 400],
     ['2005', 1170, 460],
     ['2006', 660, 1120],
     ['2007', 1030, 540],
   ],
-  chartOptions: {
+  options: {
     title: 'Company Performance',
     curveType: 'function',
     legend: { position: 'bottom' },
@@ -27,10 +27,12 @@ export default {
   args: defaultArgs,
 };
 
-const Template = (_, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = args => ({
   components: { GChart },
-  template: '<GChart :type="type" :data="chartData" :options="chartOptions"/>',
+  setup() {
+    return { args };
+  },
+  template: '<GChart v-bind="args" />',
 });
 
 export const DefaultLineChart = Template.bind({});
