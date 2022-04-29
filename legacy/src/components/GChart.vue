@@ -106,9 +106,9 @@ export default {
   beforeDestroy() {
     if (
       this.chartObject !== null &&
-      typeof this.chartObject.getChart().clearChart() === 'function'
+      typeof this.chartObject.clearChart === 'function'
     ) {
-      this.chartObject.getChart().clearChart();
+      this.chartObject.clearChart();
     }
   },
 

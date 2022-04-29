@@ -144,9 +144,9 @@ export const GChart = defineComponent({
     onBeforeUnmount(() => {
       if (
         chartObject.value !== null &&
-        typeof chartObject.value.getChart().clearChart === 'function'
+        typeof chartObject.value.clearChart === 'function'
       ) {
-        chartObject.value.getChart().clearChart();
+        chartObject.value.clearChart();
       }
 
       if (props.resizeDebounce > 0) {

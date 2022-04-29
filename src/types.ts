@@ -22,42 +22,54 @@ export type GoogleChartLoader = {
 };
 
 export type GoogleChartWrapper = {
-  new (chartWrapperOptions: Partial<ChartWrapperOptions>): GoogleChartWrapper;
+  new (element: Element): GoogleChartWrapper;
+  getContainer(): Element;
+  getSelection(): ChartSelection[];
+  setSelection(selection?: ChartSelection[] | null): void;
   draw: (
     data: GoogleDataTable | GoogleDataView,
     options: GoogleChartOptions
   ) => any;
-  toJSON: () => string;
-  clone: () => GoogleChartWrapper;
-  getDataSourceUrl: () => string;
-  getDataTable: () => GoogleDataTable | null; // null if datasourceurl set or ref to DataTable
-  getChartType: () => GoogleChartWrapperChartType;
-  getChartName: () => string;
-  getChart: () => {
-    removeAction: (actionID: string) => void;
-    getSelection: () => { row?: any; column?: any }[];
-    setAction: (ChartAction: GoogleChartAction) => void;
-    getImageURI: () => void;
-    clearChart: () => void; // Clears the chart, and releases all of its allocated resources.
-  }; // ref to chart
-  getContainerId: () => string;
-  getQuery: () => string;
-  getRefreshInterval: () => number;
-  getOption: (key: string, opt_default_value?: any) => any; // returns opt_default_value if key not found
-  getOptions: () => {};
-  getSelection: () => { row?: any; column?: any }[];
-  getView: () => {} | any[]; // Same format as toJSON
-
-  setDataSourceUrl: (url: string) => void;
-  setDataTable: (table: any) => void;
-  setChartType: (chartType: GoogleChartWrapperChartType) => void;
-  setChartName: (name: string) => void; // Sets an arbitrary name for the chart. This is not shown anywhere on the chart, unless a custom chart is explicitly designed to use it.
-  setContainerId: (id: string) => void; // Sets the ID of the containing DOM element for the chart.
-  setQuery: (query_string: string) => void; // Sets a query string, if this chart queries a data source. You must also set the data source URL if specifying this value.
-  setRefreshInterval: (interval: number) => void; // Sets the refresh interval for this chart, if it queries a data source. You must also set a data source URL if specifying this value. Zero indicates no refresh.
-  setOption: (key: string, value: any) => void; // 	Sets a single chart option value, where key is the option name and value is the value. To unset an option, pass in null for the value. Note that key may be a qualified name, such as 'vAxis.title'.
-  setOptions: (options_obj: Partial<ChartWrapperOptions['options']>) => void; //
+  clearChart(): void;
+  getImageURI(): string;
+  getAction(id: string | number): ChartAction;
+  getBoundingBox(id: string): ChartBoundingBox;
+  getChartAreaBoundingBox(): ChartBoundingBox;
+  getChartLayoutInterface(): ChartLayoutInterface;
+  getHAxisValue(position: number, axisIndex?: number): number;
+  getVAxisValue(position: number, axisIndex?: number): number;
+  getXLocation(position: number, axisIndex?: number): number;
+  getYLocation(position: number, axisIndex?: number): number;
+  removeAction(id: string | number): void;
+  setAction(action: ChartAction): void;
 };
+
+export interface ChartSelection {
+  column?: number | null | undefined;
+  row?: number | null | undefined;
+}
+
+export interface ChartAction {
+  id: string | number;
+  text: string;
+  action: () => void;
+}
+
+export interface ChartBoundingBox {
+  left: number;
+  top: number;
+  width: number;
+  height: number;
+}
+
+export interface ChartLayoutInterface {
+  getBoundingBox(id: string): ChartBoundingBox;
+  getChartAreaBoundingBox(): ChartBoundingBox;
+  getHAxisValue(position: number, axisIndex?: number): number;
+  getVAxisValue(position: number, axisIndex?: number): number;
+  getXLocation(position: number, axisIndex?: number): number;
+  getYLocation(position: number, axisIndex?: number): number;
+}
 
 export type GoogleChartEditor = {
   new (): GoogleChartEditor;
@@ -410,7 +422,7 @@ export type GoogleChartOptions = {
   width?: number;
   height?: number;
   is3D?: boolean;
-  backgroundColor: string;
+  backgroundColor?: string;
 
   title?: string;
   hAxis?: {
