@@ -1,5 +1,6 @@
-//TODO: tune after migrate to Vue3
-import Vue from 'vue';
+import Vue, { h } from 'vue';
+import { expectError } from 'tsd';
+
 import { GChart } from '../src';
 
 import { GoogleViz } from '../src/types';
@@ -7,6 +8,7 @@ import { GoogleViz } from '../src/types';
 declare global {
   interface Window {
     google?: GoogleViz;
+    Vue?: typeof Vue;
   }
 }
 
@@ -26,14 +28,38 @@ const options = {
   height: 600,
 };
 
-Vue.component('LineChart', {
-  render: function (createElement) {
-    return createElement(GChart, {
-      props: {
-        type: 'LineChart',
-        data,
-        options,
-      },
-    });
-  },
+h(GChart, {
+  type: 'AreaChart',
+});
+
+h(GChart, {
+  type: 'Histogram',
+});
+
+h(GChart, {
+  type: 'Timeline',
+});
+
+expectError(
+  h(GChart, {
+    type: 'UnknownChart',
+  })
+);
+
+h(GChart, {
+  type: 'AreaChart',
+  data: data,
+});
+
+expectError(
+  h(GChart, {
+    type: 'AreaChart',
+    data: 'data',
+  })
+);
+
+h(GChart, {
+  type: 'AreaChart',
+  data: data,
+  options: options,
 });

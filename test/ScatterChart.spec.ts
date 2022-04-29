@@ -41,7 +41,7 @@ describe('ScatterChart', () => {
       },
     });
 
-    const chart = wrapper.find('gchart-stub');
+    const chart = wrapper.find('g-chart-stub');
     expect(chart.attributes('type')).toBe(type);
     expect(chart.attributes('data')).toBe(data.flat().join(','));
   });
