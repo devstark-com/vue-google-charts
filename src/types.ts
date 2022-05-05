@@ -5,6 +5,7 @@ export type GoogleViz = {
     ChartWrapper: GoogleChartWrapper;
     ChartEditor: GoogleChartEditor;
     DataTable: GoogleDataTable;
+    DataView: GoogleDataView;
     events: GoogleVizEvents;
     arrayToDataTable: GoogleArrayToDataTable;
     drawToolbar: GoogleVizDrawToolbar;
@@ -21,39 +22,54 @@ export type GoogleChartLoader = {
 };
 
 export type GoogleChartWrapper = {
-  new (chartWrapperOptions: Partial<ChartWrapperOptions>): GoogleChartWrapper;
-  draw: (chartArgs?: ChartWrapperProps) => any;
-  toJSON: () => string;
-  clone: () => GoogleChartWrapper;
-  getDataSourceUrl: () => string;
-  getDataTable: () => GoogleDataTable | null; // null if datasourceurl set or ref to DataTable
-  getChartType: () => GoogleChartWrapperChartType;
-  getChartName: () => string;
-  getChart: () => {
-    removeAction: (actionID: string) => void;
-    getSelection: () => { row?: any; column?: any }[];
-    setAction: (ChartAction: GoogleChartAction) => void;
-    getImageURI: () => void;
-    clearChart: () => void; // Clears the chart, and releases all of its allocated resources.
-  }; // ref to chart
-  getContainerId: () => string;
-  getQuery: () => string;
-  getRefreshInterval: () => number;
-  getOption: (key: string, opt_default_value?: any) => any; // returns opt_default_value if key not found
-  getOptions: () => {};
-  getSelection: () => { row?: any; column?: any }[];
-  getView: () => {} | any[]; // Same format as toJSON
-
-  setDataSourceUrl: (url: string) => void;
-  setDataTable: (table: any) => void;
-  setChartType: (chartType: GoogleChartWrapperChartType) => void;
-  setChartName: (name: string) => void; // Sets an arbitrary name for the chart. This is not shown anywhere on the chart, unless a custom chart is explicitly designed to use it.
-  setContainerId: (id: string) => void; // Sets the ID of the containing DOM element for the chart.
-  setQuery: (query_string: string) => void; // Sets a query string, if this chart queries a data source. You must also set the data source URL if specifying this value.
-  setRefreshInterval: (interval: number) => void; // Sets the refresh interval for this chart, if it queries a data source. You must also set a data source URL if specifying this value. Zero indicates no refresh.
-  setOption: (key: string, value: any) => void; // 	Sets a single chart option value, where key is the option name and value is the value. To unset an option, pass in null for the value. Note that key may be a qualified name, such as 'vAxis.title'.
-  setOptions: (options_obj: Partial<ChartWrapperOptions['options']>) => void; //
+  new (element: Element): GoogleChartWrapper;
+  getContainer(): Element;
+  getSelection(): ChartSelection[];
+  setSelection(selection?: ChartSelection[] | null): void;
+  draw: (
+    data: GoogleDataTable | GoogleDataView,
+    options: GoogleChartOptions
+  ) => any;
+  clearChart(): void;
+  getImageURI(): string;
+  getAction(id: string | number): ChartAction;
+  getBoundingBox(id: string): ChartBoundingBox;
+  getChartAreaBoundingBox(): ChartBoundingBox;
+  getChartLayoutInterface(): ChartLayoutInterface;
+  getHAxisValue(position: number, axisIndex?: number): number;
+  getVAxisValue(position: number, axisIndex?: number): number;
+  getXLocation(position: number, axisIndex?: number): number;
+  getYLocation(position: number, axisIndex?: number): number;
+  removeAction(id: string | number): void;
+  setAction(action: ChartAction): void;
 };
+
+export interface ChartSelection {
+  column?: number | null | undefined;
+  row?: number | null | undefined;
+}
+
+export interface ChartAction {
+  id: string | number;
+  text: string;
+  action: () => void;
+}
+
+export interface ChartBoundingBox {
+  left: number;
+  top: number;
+  width: number;
+  height: number;
+}
+
+export interface ChartLayoutInterface {
+  getBoundingBox(id: string): ChartBoundingBox;
+  getChartAreaBoundingBox(): ChartBoundingBox;
+  getHAxisValue(position: number, axisIndex?: number): number;
+  getVAxisValue(position: number, axisIndex?: number): number;
+  getXLocation(position: number, axisIndex?: number): number;
+  getYLocation(position: number, axisIndex?: number): number;
+}
 
 export type GoogleChartEditor = {
   new (): GoogleChartEditor;
@@ -401,3 +417,143 @@ export type GoogleChartPackages =
   | 'wordtree';
 
 export type GoogleChartTicks = (number | Date)[];
+
+export type GoogleChartOptions = {
+  width?: number;
+  height?: number;
+  is3D?: boolean;
+  backgroundColor?: string;
+
+  title?: string;
+  hAxis?: {
+    minValue?: any;
+    maxValue?: any;
+    ticks?: GoogleChartTicks;
+    title?: string;
+    viewWindow?: { max?: any; min?: any; [otherOptionKey: string]: any };
+    [otherOptionKey: string]: any;
+  };
+  vAxis?: {
+    minValue?: any;
+    maxValue?: any;
+    ticks?: GoogleChartTicks;
+    title?: string;
+    viewWindow?: { max?: any; min?: any; [otherOptionKey: string]: any };
+    [otherOptionKey: string]: any;
+  };
+  bubble?: {};
+  pieHole?: number;
+  redFrom?: number;
+  redTo?: number;
+  yellowFrom?: number;
+  yellowTo?: number;
+  minorTicks?: number;
+  legend?:
+    | string
+    | {
+        position?: string;
+        maxLines?: number;
+        [otherOptionKey: string]: any;
+      };
+  curveType?: string;
+  showTooltip?: boolean;
+  showInfoWindow?: boolean;
+  allowHtml?: boolean;
+  isStacked?: string | boolean;
+  minColor?: string;
+  midColor?: string;
+  maxColor?: string;
+  headerHeight?: number;
+  fontColor?: string;
+  showScale?: boolean;
+  bar?: { groupWidth?: string }; // Remove space between bars.
+  candlestick?: {
+    fallingColor?: { strokeWidth?: number; fill?: string }; // red
+    risingColor?: { strokeWidth?: number; fill?: string }; // green
+    [otherOptionKey: string]: any;
+  };
+  wordtree?: {
+    format?: string;
+    word?: string;
+    [otherOptionKey: string]: any;
+  };
+  [otherOptionKey: string]: any;
+};
+
+export type GoogleDataView = {
+  new (dataParam: any): GoogleDataView;
+  getColumnId(columnIndex: number): String;
+  getColumnLabel(columnIndex: number): string;
+  getColumnPattern(columnIndex: number): string;
+  getColumnProperty(columnIndex: number, name: string): any;
+  getColumnRange(columnIndex: number): { min: any; max: any };
+  getColumnType(columnIndex: number): string;
+  getDistinctValues(columnIndex: number): any[];
+  getFilteredRows(filters: DataTableCellFilter[]): number[];
+  getFormattedValue(rowIndex: number, columnIndex: number): string;
+  getNumberOfColumns(): number;
+  getNumberOfRows(): number;
+  getProperty(rowIndex: number, columnIndex: number, name: string): any;
+  getProperties(rowIndex: number, columnIndex: number): Properties;
+  getRowProperty(rowIndex: number, name: string): any;
+  getSortedRows(sortColumn: number): number[];
+  getSortedRows(sortColumn: SortByColumn): number[];
+  getSortedRows(sortColumns: number[]): number[];
+  getSortedRows(sortColumns: SortByColumn[]): number[];
+  getTableProperty(name: string): any;
+  getValue(rowIndex: number, columnIndex: number): any;
+  getTableColumnIndex(viewColumnIndex: number): number;
+  getTableRowIndex(viewRowIndex: number): number;
+  getViewColumnIndex(tableColumnIndex: number): number;
+  getViewColumns(): number[];
+  getViewColumns(): ColumnSpec[];
+  getViewRowIndex(tableRowIndex: number): number;
+  getViewRows(): number[];
+
+  hideColumns(columnIndexes: number[]): void;
+  hideRows(min: number, max: number): void;
+  hideRows(rowIndexes: number[]): void;
+
+  setColumns(columnIndexes: number[]): void;
+  setColumns(columnIndexes: ColumnSpec[]): void;
+  setColumns(columnIndexes: any[]): void;
+  setRows(min: number, max: number): void;
+  setRows(rowIndexes: number[]): void;
+
+  toDataTable(): GoogleDataTable;
+  toJSON(): string;
+};
+
+export interface DataTableCellFilter {
+  column: number;
+  value?: any;
+  minValue?: any;
+  maxValue?: any;
+  test?:
+    | ((
+        value: any,
+        row?: number,
+        column?: number,
+        data?: GoogleDataTable | GoogleDataView
+      ) => boolean)
+    | undefined;
+}
+
+export interface Properties {
+  [property: string]: any;
+}
+
+export interface SortByColumn {
+  column: number;
+  desc: boolean;
+}
+
+export interface ColumnSpec {
+  calc?: ((data: GoogleDataTable, row: number) => any) | undefined;
+  type?: string | undefined;
+  label?: string | undefined;
+  id?: string | undefined;
+  sourceColumn?: number | undefined;
+  properties?: Properties | undefined;
+  role?: string | undefined;
+}

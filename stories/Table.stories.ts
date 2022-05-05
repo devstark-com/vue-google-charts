@@ -2,14 +2,14 @@ import { GChart } from '../src';
 
 const defaultArgs = {
   type: 'Table',
-  chartData: [
+  data: [
     ['Name', 'Salary', 'Full time employee'],
     ['Mike', { v: 10000, f: '$10,000' }, true],
     ['Jim', { v: 8000, f: '$8,000' }, false],
     ['Alice', { v: 12500, f: '$12,500' }, true],
     ['Bob', { v: 7000, f: '$7,000' }, true],
   ],
-  chartOptions: {
+  options: {
     title: 'Company Performance',
     curveType: 'function',
     legend: { position: 'bottom' },
@@ -28,10 +28,12 @@ export default {
   args: defaultArgs,
 };
 
-const Template = (_, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = args => ({
   components: { GChart },
-  template: '<GChart :type="type" :data="chartData" :options="chartOptions"/>',
+  setup() {
+    return { args };
+  },
+  template: '<GChart v-bind="args" />',
 });
 
 export const DefaultTable = Template.bind({});

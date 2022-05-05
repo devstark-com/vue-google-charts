@@ -2,7 +2,7 @@ import { GChart } from '../src';
 
 const defaultArgs = {
   type: 'ComboChart',
-  chartData: [
+  data: [
     [
       'Month',
       'Bolivia',
@@ -18,7 +18,7 @@ const defaultArgs = {
     ['2007/08', 139, 1110, 615, 968, 215, 609.4],
     ['2008/09', 136, 691, 629, 1026, 366, 569.6],
   ],
-  chartOptions: {
+  options: {
     title: 'Monthly Coffee Production by Country',
     vAxis: { title: 'Cups' },
     hAxis: { title: 'Month' },
@@ -38,10 +38,12 @@ export default {
   args: defaultArgs,
 };
 
-const Template = (_, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = args => ({
   components: { GChart },
-  template: '<GChart :type="type" :data="chartData" :options="chartOptions"/>',
+  setup() {
+    return { args };
+  },
+  template: '<GChart v-bind="args" />',
 });
 
 export const DefaultComboChart = Template.bind({});

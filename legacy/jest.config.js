@@ -3,7 +3,7 @@ module.exports = {
   testMatch: ['<rootDir>/test/(*.)spec.(js|ts)'],
   moduleFileExtensions: ['js', 'ts', 'vue'],
   transform: {
-    '^.+\\.vue$': '@vue/vue3-jest',
+    '^.+\\.vue$': '@vue/vue2-jest',
     '^.+\\.(t|j)sx?$': [
       '@swc/jest',
       {

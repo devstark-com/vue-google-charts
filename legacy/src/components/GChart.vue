@@ -3,8 +3,9 @@
 </template>
 
 <script>
-import { loadGoogleCharts } from '../lib/google-charts-loader';
-import { debounce } from '../lib/debounce';
+import { loadGoogleCharts } from '../../../src/lib/google-charts-loader';
+import { debounce } from '../../../src/lib/debounce';
+import { createChartObject, getValidChartData } from '../../../src/utils';
 
 let chartsLib = null;
 export default {
@@ -66,8 +67,15 @@ export default {
         this.drawChart();
       },
     },
-    type(value) {
-      this.createChartObject();
+    type() {
+      this.chartObject = createChartObject(
+        chartsLib,
+        this.chartObject,
+        this.$refs.chart,
+        this.type,
+        this.events,
+        this.createChart
+      );
       this.drawChart();
     },
   },
@@ -75,10 +83,19 @@ export default {
   mounted() {
     loadGoogleCharts(this.version, this.settings).then(api => {
       chartsLib = api;
-      const chart = this.createChartObject();
-      this.$emit('ready', chart, api);
+      this.chartObject = createChartObject(
+        chartsLib,
+        this.chartObject,
+        this.$refs.chart,
+        this.type,
+        this.events,
+        this.createChart
+      );
+
+      this.$emit('ready', this.chartObject, api);
       this.drawChart();
     });
+
     if (this.resizeDebounce > 0)
       window.addEventListener(
         'resize',
@@ -87,7 +104,10 @@ export default {
   },
 
   beforeDestroy() {
-    if (this.chartObject && typeof this.chartObject.clearChart === 'function') {
+    if (
+      this.chartObject !== null &&
+      typeof this.chartObject.clearChart === 'function'
+    ) {
       this.chartObject.clearChart();
     }
   },
@@ -95,42 +115,8 @@ export default {
   methods: {
     drawChart() {
       if (!chartsLib || !this.chartObject) return;
-      const data = this.getValidChartData();
+      const data = getValidChartData(chartsLib, this.data);
       if (data) this.chartObject.draw(data, this.options);
-    },
-
-    getValidChartData() {
-      if (this.data instanceof chartsLib.visualization.DataTable)
-        return this.data;
-      if (this.data instanceof chartsLib.visualization.DataView)
-        return this.data;
-      if (Array.isArray(this.data))
-        return chartsLib.visualization.arrayToDataTable(this.data);
-      if (this.data !== null && typeof this.data === 'object')
-        return new chartsLib.visualization.DataTable(this.data);
-      return null;
-    },
-
-    createChartObject() {
-      const createChart = (el, google, type) => {
-        if (!type) throw new Error('please, provide chart type property');
-        return new google.visualization[type](el);
-      };
-      const fn = this.createChart || createChart;
-      this.chartObject = fn(this.$refs.chart, chartsLib, this.type);
-      this.attachListeners();
-      return this.chartObject;
-    },
-
-    attachListeners() {
-      if (!this.events) return;
-      Object.entries(this.events).forEach(([event, listener]) => {
-        chartsLib.visualization.events.addListener(
-          this.chartObject,
-          event,
-          listener
-        );
-      });
     },
   },
 };

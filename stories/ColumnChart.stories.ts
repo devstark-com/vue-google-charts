@@ -2,14 +2,14 @@ import { GChart } from '../src';
 
 const defaultArgs = {
   type: 'ColumnChart',
-  chartData: [
+  data: [
     ['Year', 'Sales', 'Expenses', 'Profit'],
     ['2014', 1000, 400, 200],
     ['2015', 1170, 460, 250],
     ['2016', 660, 1120, 300],
     ['2017', 1030, 540, 350],
   ],
-  chartOptions: {
+  options: {
     chart: {
       title: 'Company Performance',
       subtitle: 'Sales, Expenses, and Profit: 2014-2017',
@@ -28,10 +28,12 @@ export default {
   args: defaultArgs,
 };
 
-const Template = (_, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = args => ({
   components: { GChart },
-  template: '<GChart :type="type" :data="chartData" :options="chartOptions"/>',
+  setup() {
+    return { args };
+  },
+  template: '<GChart v-bind="args" />',
 });
 
 export const DefaultColumn = Template.bind({});

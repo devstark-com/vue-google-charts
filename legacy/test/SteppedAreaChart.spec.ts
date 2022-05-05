@@ -2,7 +2,7 @@ import { shallowMount } from '@vue/test-utils';
 
 import { GChart } from '../src';
 
-describe('ScatterChart', () => {
+describe('SteppedAreaChart', () => {
   const Component = {
     template:
       '<div><GChart :type="type" :data="data" :options="options"/></div>',
@@ -10,24 +10,20 @@ describe('ScatterChart', () => {
     props: ['type', 'data', 'options'],
   };
 
-  const type = 'ScatterChart';
+  const type = 'SteppedAreaChart';
 
   const data = [
-    ['Year', 'Sales', 'Expenses'],
-    ['2004', 1000, 400],
-    ['2005', 1170, 460],
-    ['2006', 660, 1120],
-    ['2008', 1030, 540],
-    ['2009', 1000, 400],
-    ['2010', 1170, 460],
-    ['2011', 660, 1120],
-    ['2012', 1030, 540],
+    ['Director (Year)', 'Rotten Tomatoes', 'IMDB'],
+    ['Alfred Hitchcock (1935)', 8.4, 7.9],
+    ['Ralph Thomas (1959)', 6.9, 6.5],
+    ['Don Sharp (1978)', 6.5, 6.4],
+    ['James Hawes (2008)', 4.4, 6.2],
   ];
 
   const options = {
-    title: 'Company Performance',
-    curveType: 'function',
-    legend: { position: 'bottom' },
+    title: "The decline of 'The 39 Steps'",
+    vAxis: { title: 'Accumulated Rating' },
+    isStacked: true,
     width: 800,
     height: 600,
   };
@@ -41,7 +37,7 @@ describe('ScatterChart', () => {
       },
     });
 
-    const chart = wrapper.find('g-chart-stub');
+    const chart = wrapper.find('gchart-stub');
     expect(chart.attributes('type')).toBe(type);
     expect(chart.attributes('data')).toBe(data.flat().join(','));
   });

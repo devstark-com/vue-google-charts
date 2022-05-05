@@ -1,13 +1,13 @@
-import vue from 'rollup-plugin-vue2';
+import vue from '@vitejs/plugin-vue';
 import swc from 'rollup-plugin-swc';
 import replace from '@rollup/plugin-replace';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import pkg from './package.json';
 
 const extensions = ['.js', '.ts'];
-const external = _ => /node_modules/.test(_) && !/@swc\/helpers/.test(_);
-const plugins = (targets, vueOptions = {}) => [
-  vue(vueOptions),
+export const external = _ => /node_modules/.test(_) && !/@swc\/helpers/.test(_);
+export const plugins = (targets, vueLib, vueOptions = {}) => [
+  vueLib(vueOptions),
   nodeResolve({
     extensions,
   }),
@@ -31,7 +31,7 @@ const plugins = (targets, vueOptions = {}) => [
 export default [
   {
     input: pkg.main,
-    plugins: plugins('defaults and supports es6-module'),
+    plugins: plugins('defaults and supports es6-module', vue),
     external,
     output: {
       format: 'es',
@@ -41,7 +41,7 @@ export default [
   },
   {
     input: pkg.main,
-    plugins: plugins('defaults, not ie 11, not ie_mob 11', {
+    plugins: plugins('defaults, not ie 11, not ie_mob 11', vue, {
       template: {
         optimizeSSR: true,
       },

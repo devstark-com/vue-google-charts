@@ -2,7 +2,7 @@ import { shallowMount } from '@vue/test-utils';
 
 import { GChart } from '../src';
 
-describe('ScatterChart', () => {
+describe('BarChart', () => {
   const Component = {
     template:
       '<div><GChart :type="type" :data="data" :options="options"/></div>',
@@ -10,24 +10,27 @@ describe('ScatterChart', () => {
     props: ['type', 'data', 'options'],
   };
 
-  const type = 'ScatterChart';
+  const type = 'BarChart';
 
   const data = [
-    ['Year', 'Sales', 'Expenses'],
-    ['2004', 1000, 400],
-    ['2005', 1170, 460],
-    ['2006', 660, 1120],
-    ['2008', 1030, 540],
-    ['2009', 1000, 400],
-    ['2010', 1170, 460],
-    ['2011', 660, 1120],
-    ['2012', 1030, 540],
+    ['City', '2010 Population', '2000 Population'],
+    ['New York City, NY', 8175000, 8008000],
+    ['Los Angeles, CA', 3792000, 3694000],
+    ['Chicago, IL', 2695000, 2896000],
+    ['Houston, TX', 2099000, 1953000],
+    ['Philadelphia, PA', 1526000, 1517000],
   ];
 
   const options = {
-    title: 'Company Performance',
-    curveType: 'function',
-    legend: { position: 'bottom' },
+    title: 'Population of Largest U.S. Cities',
+    chartArea: { width: '50%' },
+    hAxis: {
+      title: 'Total Population',
+      minValue: 0,
+    },
+    vAxis: {
+      title: 'City',
+    },
     width: 800,
     height: 600,
   };
@@ -41,7 +44,7 @@ describe('ScatterChart', () => {
       },
     });
 
-    const chart = wrapper.find('g-chart-stub');
+    const chart = wrapper.find('gchart-stub');
     expect(chart.attributes('type')).toBe(type);
     expect(chart.attributes('data')).toBe(data.flat().join(','));
   });

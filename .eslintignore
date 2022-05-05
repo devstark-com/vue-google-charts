@@ -1,0 +1,7 @@
+# builds
+package
+dist
+
+# legacy builds
+/legacy/index.cjs
+/legacy/index.js

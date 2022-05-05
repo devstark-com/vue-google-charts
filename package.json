@@ -23,18 +23,23 @@
     "directory": "package"
   },
   "files": [
-    "dist/"
+    "dist/",
+    "legacy/index.*"
   ],
   "scripts": {
     "prepublishOnly": "pnpm test && pnpm build && del ./package && clean-publish",
     "postpublish": "del ./package",
     "emitDeclarations": "tsc --emitDeclarationOnly",
-    "build": "rollup -c & pnpm emitDeclarations",
-    "lint": "eslint --ext .js,.vue src",
+    "build:latest": "rollup -c & pnpm emitDeclarations",
+    "build:legacy": "rollup -c legacy/rollup.config.js & pnpm emitDeclarations",
+    "build": "pnpm build:latest && pnpm build:legacy",
+    "lint": "eslint --ext .js,.vue,.ts src",
     "format": "prettier --write src rollup.config.js",
     "test:size": "size-limit",
     "test:typings": "tsd",
-    "test:unit": "jest -c jest.config.js",
+    "test:unit:latest": "jest -c jest.config.js",
+    "test:unit:legacy": "cd legacy && pnpm test:unit",
+    "test:unit": "pnpm test:unit:latest && pnpm test:unit:legacy",
     "test": "pnpm lint && pnpm test:unit",
     "commit": "cz",
     "bumpVersion": "standard-version",
@@ -52,7 +57,7 @@
     "charts component"
   ],
   "peerDependencies": {
-    "vue": "^2.6.0"
+    "vue": "^3.0.0-0 || ^2.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.9",
@@ -64,16 +69,17 @@
     "@size-limit/preset-big-lib": "^7.0.8",
     "@storybook/addon-actions": "^6.4.20",
     "@storybook/addon-essentials": "^6.4.20",
-    "@storybook/vue": "^6.4.20",
+    "@storybook/vue3": "^6.4.22",
     "@swc/core": "^1.2.124",
     "@swc/helpers": "^0.3.2",
     "@swc/jest": "^0.2.20",
     "@types/jest": "^27.4.1",
+    "@vitejs/plugin-vue": "^2.3.1",
     "@vue/cli-plugin-babel": "^5.0.4",
     "@vue/compiler-sfc": "^3.2.26",
     "@vue/eslint-config-typescript": "^10.0.0",
-    "@vue/test-utils": "1",
-    "@vue/vue2-jest": "^27.0.0-alpha.4",
+    "@vue/test-utils": "^2.0.0-rc.21",
+    "@vue/vue3-jest": "^27.0.0",
     "babel-jest": "^27.5.1",
     "babel-loader": "^8.2.4",
     "browserslist": "^4.19.1",
@@ -91,16 +97,15 @@
     "prettier": "^2.5.1",
     "rollup": "^2.62.0",
     "rollup-plugin-swc": "^0.2.0",
-    "rollup-plugin-vue2": "^0.8.1",
     "simple-git-hooks": "^2.7.0",
     "simple-github-release": "^1.0.0",
     "size-limit": "^7.0.8",
     "standard-version": "^9.3.2",
     "tsd": "^0.20.0",
     "typescript": "^4.6.3",
-    "vue": "^2.6.14",
-    "vue-loader": "15.9.8",
-    "vue-template-compiler": "^2.6.14"
+    "vite": "^2.9.6",
+    "vue": "^3.2.33",
+    "vue-loader": "^17.0.0"
   },
   "pnpm": {
     "overrides": {

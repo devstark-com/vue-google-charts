@@ -2,7 +2,7 @@ import { shallowMount } from '@vue/test-utils';
 
 import { GChart } from '../src';
 
-describe('ScatterChart', () => {
+describe('ColumnChart', () => {
   const Component = {
     template:
       '<div><GChart :type="type" :data="data" :options="options"/></div>',
@@ -10,24 +10,21 @@ describe('ScatterChart', () => {
     props: ['type', 'data', 'options'],
   };
 
-  const type = 'ScatterChart';
+  const type = 'ColumnChart';
 
   const data = [
-    ['Year', 'Sales', 'Expenses'],
-    ['2004', 1000, 400],
-    ['2005', 1170, 460],
-    ['2006', 660, 1120],
-    ['2008', 1030, 540],
-    ['2009', 1000, 400],
-    ['2010', 1170, 460],
-    ['2011', 660, 1120],
-    ['2012', 1030, 540],
+    ['Year', 'Sales', 'Expenses', 'Profit'],
+    ['2014', 1000, 400, 200],
+    ['2015', 1170, 460, 250],
+    ['2016', 660, 1120, 300],
+    ['2017', 1030, 540, 350],
   ];
 
   const options = {
-    title: 'Company Performance',
-    curveType: 'function',
-    legend: { position: 'bottom' },
+    chart: {
+      title: 'Company Performance',
+      subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+    },
     width: 800,
     height: 600,
   };
@@ -41,7 +38,7 @@ describe('ScatterChart', () => {
       },
     });
 
-    const chart = wrapper.find('g-chart-stub');
+    const chart = wrapper.find('gchart-stub');
     expect(chart.attributes('type')).toBe(type);
     expect(chart.attributes('data')).toBe(data.flat().join(','));
   });

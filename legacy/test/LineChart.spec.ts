@@ -2,7 +2,7 @@ import { shallowMount } from '@vue/test-utils';
 
 import { GChart } from '../src';
 
-describe('ScatterChart', () => {
+describe('LineChart', () => {
   const Component = {
     template:
       '<div><GChart :type="type" :data="data" :options="options"/></div>',
@@ -10,18 +10,14 @@ describe('ScatterChart', () => {
     props: ['type', 'data', 'options'],
   };
 
-  const type = 'ScatterChart';
+  const type = 'LineChart';
 
   const data = [
     ['Year', 'Sales', 'Expenses'],
     ['2004', 1000, 400],
     ['2005', 1170, 460],
     ['2006', 660, 1120],
-    ['2008', 1030, 540],
-    ['2009', 1000, 400],
-    ['2010', 1170, 460],
-    ['2011', 660, 1120],
-    ['2012', 1030, 540],
+    ['2007', 1030, 540],
   ];
 
   const options = {
@@ -41,7 +37,7 @@ describe('ScatterChart', () => {
       },
     });
 
-    const chart = wrapper.find('g-chart-stub');
+    const chart = wrapper.find('gchart-stub');
     expect(chart.attributes('type')).toBe(type);
     expect(chart.attributes('data')).toBe(data.flat().join(','));
   });

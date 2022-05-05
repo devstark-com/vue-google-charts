@@ -2,7 +2,7 @@ import { GChart } from '../src';
 
 const defaultArgs = {
   type: 'Histogram',
-  chartData: [
+  data: [
     ['Dinosaur', 'Length'],
     ['Acrocanthosaurus (top-spined lizard)', 12.2],
     ['Albertosaurus (Alberta lizard)', 9.1],
@@ -33,7 +33,7 @@ const defaultArgs = {
     ['Ultrasaurus (ultra lizard)', 30.5],
     ['Velociraptor (swift robber)', 1.8],
   ],
-  chartOptions: {
+  options: {
     title: 'Lengths of dinosaurs, in meters',
     legend: { position: 'none' },
     width: 800,
@@ -50,10 +50,12 @@ export default {
   args: defaultArgs,
 };
 
-const Template = (_, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = args => ({
   components: { GChart },
-  template: '<GChart :type="type" :data="chartData" :options="chartOptions"/>',
+  setup() {
+    return { args };
+  },
+  template: '<GChart v-bind="args" />',
 });
 
 export const DefaultHistogram = Template.bind({});
