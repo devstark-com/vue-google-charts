@@ -5,28 +5,36 @@
 
 Reactive Vue.js wrapper for Google Charts lib
 
-## Table of contents
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Example](#example)
+<br />
+<a href="#installation">Installation</a>
+<span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+<a href="#usage">Usage</a>
+<span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+<a href="https://slack.cube.dev/?ref=eco-vue-google-charts">Slack</a>
+<br />
+<hr />
 
 # Installation
 
-```
+```bash
+pnpm add vue-google-charts
+# or
+yarn add vue-google-charts
+# or
 npm i vue-google-charts
 ```
 
+<hr />
+
+Need an API to fetch data? Consider [Cube](https://cube.dev/?ref=eco-vue-google-charts), an open-source API for data apps.
+
+<br />
+
+[![supported by Cube](https://user-images.githubusercontent.com/986756/154330861-d79ab8ec-aacb-4af8-9e17-1b28f1eccb01.svg)](https://cube.dev/?ref=eco-vue-google-charts)
+
 ## Default import
 
-Install a component globally (use as plugin):
-
-```javascript
-import Vue from 'vue'
-import VueGoogleCharts from 'vue-google-charts'
-
-Vue.use(VueGoogleCharts)
-```
+This package works with version 2.x and 3.x of Vue.
 
 Use locally in a component:
 
@@ -40,14 +48,11 @@ export default {
 }
 ```
 
-## Browser
+For Vue 2 projects, you need to import from `vue-google-charts/legacy`.
 
-```html
-<script src="vue.js"></script>
-<script src="vue-google-charts/dist/vue-google-charts.browser.js"></script>
+```javascript
+import { GChart } from 'vue-google-charts/legacy'
 ```
-
-The plugin should be auto-installed. If not, you can install it manually with the instructions below.
 
 # Usage
 
