@@ -18,7 +18,8 @@ export interface ICreateChartFunction {
 
 export function getValidChartData(
   chartsLib: null | GoogleViz,
-  data: unknown[][] | GoogleDataTable | Record<string, any> | null
+  data: unknown[][] | GoogleDataTable | Record<string, any> | null,
+  isFirstRowLabels?: boolean
 ): GoogleDataTable | GoogleDataView | null {
   if (chartsLib !== null && data instanceof chartsLib.visualization.DataTable) {
     return data;
@@ -29,7 +30,7 @@ export function getValidChartData(
   }
 
   if (chartsLib !== null && Array.isArray(data)) {
-    return chartsLib.visualization.arrayToDataTable(data);
+    return chartsLib.visualization.arrayToDataTable(data, isFirstRowLabels);
   }
 
   if (chartsLib !== null && data !== null && typeof data === 'object') {

@@ -20,6 +20,10 @@ export default {
       type: [Array, Object],
       default: () => [],
     },
+    isFirstRowLabels: {
+      type: Boolean,
+      default: false,
+    },
     options: {
       type: Object,
       default: () => ({}),
@@ -115,7 +119,11 @@ export default {
   methods: {
     drawChart() {
       if (!chartsLib || !this.chartObject) return;
-      const data = getValidChartData(chartsLib, this.data);
+      const data = getValidChartData(
+        chartsLib,
+        this.data,
+        this.isFirstRowLabels
+      );
       if (data) this.chartObject.draw(data, this.options);
     },
   },
