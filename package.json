@@ -1,6 +1,6 @@
 {
   "name": "vue-google-charts",
-  "version": "0.3.2",
+  "version": "0.9.1",
   "description": "Reactive Vue.js wrapper for Google Charts lib",
   "author": {
     "name": "Refat",
@@ -15,6 +15,7 @@
   "bugs": {
     "url": "https://github.com/devstark-com/vue-google-charts/issues"
   },
+  "packageManager": "pnpm@6.32.13",
   "main": "./src/index.ts",
   "types": "./dist/index.d.ts",
   "publishConfig": {
