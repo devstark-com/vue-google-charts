@@ -1,6 +1,6 @@
 {
   "name": "vue-google-charts",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "packageManager": "pnpm@6.32.9",
   "description": "Reactive Vue.js wrapper for Google Charts lib",
   "author": {
