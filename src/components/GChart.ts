@@ -43,6 +43,10 @@ export const GChart = defineComponent({
       >,
       default: () => [],
     },
+    isFirstRowLabels: {
+      type: Boolean,
+      default: false,
+    },
     options: {
       type: Object as PropType<GoogleChartOptions>,
       default: () => ({}),
@@ -79,7 +83,11 @@ export const GChart = defineComponent({
         return;
       }
 
-      const data = getValidChartData(chartsLib, props.data);
+      const data = getValidChartData(
+        chartsLib,
+        props.data,
+        props.isFirstRowLabels
+      );
       if (data !== null) {
         chartObject.value?.draw(data, props.options);
       }
