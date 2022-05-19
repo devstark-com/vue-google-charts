@@ -1,20 +1,15 @@
 import { GChart } from '../src';
 
+import {
+  type,
+  data,
+  options,
+} from '../sandboxes/sankey-chart/src/components/GoogleChart';
+
 const defaultArgs = {
-  type: 'Sankey',
-  data: [
-    ['From', 'To', 'Weight'],
-    ['A', 'X', 5],
-    ['A', 'Y', 7],
-    ['A', 'Z', 6],
-    ['B', 'X', 2],
-    ['B', 'Y', 9],
-    ['B', 'Z', 4],
-  ],
-  options: {
-    width: 800,
-    height: 600,
-  },
+  type,
+  data,
+  options,
   settings: {
     packages: ['sankey'],
   },
