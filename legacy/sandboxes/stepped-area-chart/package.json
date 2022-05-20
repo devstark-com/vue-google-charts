@@ -1,0 +1,7 @@
+{
+  "name": "vue-google-chart",
+  "dependencies": {
+    "vue": "2.6.14",
+    "vue-google-charts": "^1.0.0"
+  }
+}
