@@ -1,0 +1,11 @@
+{
+  "name": "google-chart",
+  "dependencies": {
+    "typescript": "^4.6.4",
+    "vue": "^3.2.33",
+    "vue-google-charts": "^1.0.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0"
+  }
+}

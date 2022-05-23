@@ -1,22 +1,15 @@
 import { GChart } from '../src';
 
+import {
+  type,
+  data,
+  options,
+} from '../sandboxes/gauge-chart/src/components/GoogleChart';
+
 const defaultArgs = {
-  type: 'Gauge',
-  data: [
-    ['Label', 'Value'],
-    ['Memory', 80],
-    ['CPU', 55],
-    ['Network', 68],
-  ],
-  options: {
-    width: 800,
-    height: 600,
-    redFrom: 90,
-    redTo: 100,
-    yellowFrom: 75,
-    yellowTo: 90,
-    minorTicks: 5,
-  },
+  type,
+  data,
+  options,
   settings: {
     packages: ['gauge'],
   },

@@ -1,33 +1,15 @@
 import { GChart } from '../src';
 
+import {
+  type,
+  data,
+  options,
+} from '../sandboxes/org-chart/src/components/GoogleChart';
+
 const defaultArgs = {
-  type: 'OrgChart',
-  data: [
-    [
-      {
-        v: 'Mike',
-        f: 'Mike<div style="color:red; font-style:italic">President</div>',
-      },
-      '',
-      'The President',
-    ],
-    [
-      {
-        v: 'Jim',
-        f: 'Jim<div style="color:red; font-style:italic">Vice President</div>',
-      },
-      'Mike',
-      'VP',
-    ],
-    ['Alice', 'Mike', ''],
-    ['Bob', 'Jim', 'Bob Sponge'],
-    ['Carol', 'Bob', ''],
-  ],
-  options: {
-    width: 800,
-    height: 600,
-    allowHtml: true,
-  },
+  type,
+  data,
+  options,
   settings: {
     packages: ['orgchart'],
   },

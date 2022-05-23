@@ -1,20 +1,15 @@
 import { GChart } from '../src';
 
+import {
+  type,
+  data,
+  options,
+} from '../sandboxes/geo-chart/src/components/GoogleChart';
+
 const defaultArgs = {
-  type: 'GeoChart',
-  data: [
-    ['Country', 'Popularity'],
-    ['Germany', 200],
-    ['United States', 300],
-    ['Brazil', 400],
-    ['Canada', 500],
-    ['France', 600],
-    ['RU', 700],
-  ],
-  options: {
-    width: 800,
-    height: 600,
-  },
+  type,
+  data,
+  options,
   settings: {
     packages: ['geochart'],
   },
