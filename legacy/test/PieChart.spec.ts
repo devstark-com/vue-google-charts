@@ -2,6 +2,12 @@ import { shallowMount } from '@vue/test-utils';
 
 import { GChart } from '../src';
 
+import {
+  chartType,
+  chartData,
+  chartOptions,
+} from '../sandboxes/pie-chart/src/components/google-chart/GoogleChartData';
+
 describe('PieChart', () => {
   const Component = {
     template:
@@ -10,22 +16,11 @@ describe('PieChart', () => {
     props: ['type', 'data', 'options'],
   };
 
-  const type = 'PieChart';
+  const type = chartType;
 
-  const data = [
-    ['Task', 'Hours per Day'],
-    ['Work', 11],
-    ['Eat', 2],
-    ['Commute', 2],
-    ['Watch TV', 2],
-    ['Sleep', 7],
-  ];
+  const data = chartData;
 
-  const options = {
-    title: 'My Daily Activities',
-    width: 800,
-    height: 600,
-  };
+  const options = chartOptions;
 
   it('should render a chart', () => {
     const wrapper = shallowMount(Component, {

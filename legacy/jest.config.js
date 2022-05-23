@@ -21,4 +21,7 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: ['<rootDir>/src/*'],
   coverageReporters: ['lcovonly', 'text'],
+  moduleNameMapper: {
+    'vue-google-charts': '<rootDir>/legacy/src/',
+  },
 };

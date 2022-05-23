@@ -6,14 +6,14 @@ import {
   chartType,
   chartData,
   chartOptions,
-} from '../sandboxes/column-chart/src/components/google-chart/GoogleChartData';
+} from '../sandboxes/calendar-chart/src/components/google-chart/GoogleChartData';
 
-describe('ColumnChart', () => {
+describe('CalendarChart', () => {
   const Component = {
     template:
-      '<div><GChart :type="type" :data="data" :options="options"/></div>',
+      '<div><GChart :type="type" :data="data" :options="options" :settings="settings"/></div>',
     components: { GChart },
-    props: ['type', 'data', 'options'],
+    props: ['type', 'data', 'options', 'settings'],
   };
 
   const type = chartType;
@@ -22,12 +22,17 @@ describe('ColumnChart', () => {
 
   const options = chartOptions;
 
+  const settings = {
+    packages: ['calendar'],
+  };
+
   it('should render a chart', () => {
     const wrapper = shallowMount(Component, {
       propsData: {
         type,
         data,
         options,
+        settings,
       },
     });
 

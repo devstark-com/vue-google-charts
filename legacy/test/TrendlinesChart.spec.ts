@@ -6,9 +6,9 @@ import {
   chartType,
   chartData,
   chartOptions,
-} from '../sandboxes/column-chart/src/components/google-chart/GoogleChartData';
+} from '../sandboxes/trendlines-chart/src/components/google-chart/GoogleChartData';
 
-describe('ColumnChart', () => {
+describe('TrendlinesChart', () => {
   const Component = {
     template:
       '<div><GChart :type="type" :data="data" :options="options"/></div>',
