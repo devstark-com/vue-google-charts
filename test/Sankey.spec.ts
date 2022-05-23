@@ -6,14 +6,18 @@ import {
   type,
   data,
   options,
-} from '../sandboxes/histogram-chart/src/components/GoogleChart';
+} from '../sandboxes/sankey-chart/src/components/GoogleChart';
 
-describe('Histogram', () => {
+describe('SankeyChart', () => {
   const Component = {
     template:
-      '<div><GChart :type="type" :data="data" :options="options"/></div>',
+      '<div><GChart :type="type" :data="data" :options="options" :settings="settings"/></div>',
     components: { GChart },
-    props: ['type', 'data', 'options'],
+    props: ['type', 'data', 'options', 'settings'],
+  };
+
+  const settings = {
+    packages: ['sankey'],
   };
 
   it('should render a chart', () => {
@@ -22,6 +26,7 @@ describe('Histogram', () => {
         type,
         data,
         options,
+        settings,
       },
     });
 

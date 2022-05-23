@@ -2,29 +2,18 @@ import { shallowMount } from '@vue/test-utils';
 
 import { GChart } from '../src';
 
+import {
+  type,
+  data,
+  options,
+} from '../sandboxes/candlestick-chart/src/components/GoogleChart';
+
 describe('CandlestickChart', () => {
   const Component = {
     template:
       '<div><GChart :type="type" :data="data" :options="options"/></div>',
     components: { GChart },
     props: ['type', 'data', 'options'],
-  };
-
-  const type = 'CandlestickChart';
-
-  const data = [
-    ['day', 'a', 'b', 'c', 'd'],
-    ['Mon', 20, 28, 38, 45],
-    ['Tue', 31, 38, 55, 66],
-    ['Wed', 50, 55, 77, 80],
-    ['Thu', 50, 77, 66, 77],
-    ['Fri', 15, 66, 22, 68],
-  ];
-
-  const options = {
-    legend: 'none',
-    width: 800,
-    height: 600,
   };
 
   it('should render a chart', () => {

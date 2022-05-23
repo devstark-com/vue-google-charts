@@ -6,15 +6,17 @@ import {
   type,
   data,
   options,
-} from '../sandboxes/histogram-chart/src/components/GoogleChart';
+} from '../sandboxes/waterfall-chart/src/components/GoogleChart';
 
-describe('Histogram', () => {
+describe('WaterfallChart', () => {
   const Component = {
     template:
-      '<div><GChart :type="type" :data="data" :options="options"/></div>',
+      '<div><GChart :type="type" :data="data" :options="options" :isFirstRowLabels="isFirstRowLabels"/></div>',
     components: { GChart },
-    props: ['type', 'data', 'options'],
+    props: ['type', 'data', 'options', 'isFirstRowLabels'],
   };
+
+  const isFirstRowLabels = true;
 
   it('should render a chart', () => {
     const wrapper = shallowMount(Component, {
@@ -22,6 +24,7 @@ describe('Histogram', () => {
         type,
         data,
         options,
+        isFirstRowLabels,
       },
     });
 

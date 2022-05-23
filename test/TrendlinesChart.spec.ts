@@ -6,9 +6,9 @@ import {
   type,
   data,
   options,
-} from '../sandboxes/histogram-chart/src/components/GoogleChart';
+} from '../sandboxes/trendlines-chart/src/components/GoogleChart';
 
-describe('Histogram', () => {
+describe('TrendlinesChart', () => {
   const Component = {
     template:
       '<div><GChart :type="type" :data="data" :options="options"/></div>',
