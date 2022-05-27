@@ -2,6 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/vue-google-charts.svg) ![npm](https://img.shields.io/npm/dm/vue-google-charts.svg)](https://www.npmjs.com/package/vue-google-charts)
 [![vue2](https://img.shields.io/badge/vue-2.x-brightgreen.svg)](https://vuejs.org/)
+[![vue3](https://img.shields.io/badge/vue-3.x-brightgreen.svg)](https://vuejs.org/)
 
 Reactive Vue.js wrapper for Google Charts lib
 
@@ -11,6 +12,8 @@ Reactive Vue.js wrapper for Google Charts lib
 <a href="#usage">Usage</a>
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
 <a href="https://slack.cube.dev/?ref=eco-vue-google-charts">Slack</a>
+<span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+<a href="#examples">Examples</a>
 <br />
 <hr />
 
@@ -263,22 +266,32 @@ npm run build
 
 ---
 
-## Demos
+## Examples
 
-1. Simple usage
-https://codesandbox.io/embed/p7k483o42j?module=%2Fsrc%2FApp.vue
-
-2. Material design bar chart
-https://codesandbox.io/embed/z699l6oq4p?module=%2Fsrc%2FApp.vue
-
-3. Bubble chart
-https://codesandbox.io/embed/rmqzv6p4mm?module=%2Fsrc%2FApp.vue
-
-4. Getting data from Google Spreadsheets
-https://codesandbox.io/embed/yqxxkp32mj?module=%2Fsrc%2FApp.vue
-
-5. Chart event handling
-https://codesandbox.io/embed/xlloookqqo?module=%2Fsrc%2FApp.vue
+- Area Chart: [Vue 2](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/legacy/sandboxes/area-chart) / [Vue 3](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/sandboxes/area-chart)
+- Bar Chart: [Vue 2](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/legacy/sandboxes/bar-chart) / [Vue 3](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/sandboxes/bar-chart)
+- Bubble Chart: [Vue 2](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/legacy/sandboxes/bubble-chart) / [Vue 3](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/sandboxes/bubble-chart)
+- Calendar Chart: [Vue 2](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/legacy/sandboxes/calendar-chart) / [Vue 3](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/sandboxes/calendar-chart)
+- Candlestick Chart: [Vue 2](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/legacy/sandboxes/candlestick-chart) / [Vue 3](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/sandboxes/candlestick-chart)
+- Column Chart: [Vue 2](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/legacy/sandboxes/column-chart) / [Vue 3](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/sandboxes/column-chart)
+- Combo Chart: [Vue 2](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/legacy/sandboxes/combo-chart) / [Vue 3](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/sandboxes/combo-chart)
+- Donut Chart: [Vue 2](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/legacy/sandboxes/donut-chart) / [Vue 3](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/sandboxes/donut-chart)
+- Gantt Chart: [Vue 2](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/legacy/sandboxes/gantt-chart) / [Vue 3](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/sandboxes/gantt-chart)
+- Gauge Chart: [Vue 2](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/legacy/sandboxes/gauge-chart) / [Vue 3](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/sandboxes/gauge-chart)
+- Geo Chart: [Vue 2](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/legacy/sandboxes/geo-chart) / [Vue 3](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/sandboxes/geo-chart)
+- Histogram Chart: [Vue 2](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/legacy/sandboxes/histogram-chart) / [Vue 3](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/sandboxes/histogram-chart)
+- Line Chart: [Vue 2](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/legacy/sandboxes/line-chart) / [Vue 3](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/sandboxes/line-chart)
+- Org Chart: [Vue 2](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/legacy/sandboxes/org-chart) / [Vue 3](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/sandboxes/org-chart)
+- Pie Chart: [Vue 2](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/legacy/sandboxes/pie-chart) / [Vue 3](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/sandboxes/pie-chart)
+- Sankey Chart: [Vue 2](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/legacy/sandboxes/sankey-chart) / [Vue 3](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/sandboxes/sankey-chart)
+- Scatter Chart: [Vue 2](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/legacy/sandboxes/scatter-chart) / [Vue 3](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/sandboxes/scatter-chart)
+- Stepped Area Chart: [Vue 2](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/legacy/sandboxes/stepped-area-chart) / [Vue 3](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/sandboxes/stepped-area-chart)
+- Table Chart: [Vue 2](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/legacy/sandboxes/table-chart) / [Vue 3](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/sandboxes/table-chart)
+- Timeline Chart: [Vue 2](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/legacy/sandboxes/timeline-chart) / [Vue 3](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/sandboxes/time-line-chart)
+- Tree Map Chart: [Vue 2](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/legacy/sandboxes/tree-map-chart) / [Vue 3](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/sandboxes/tree-map-chart)
+- Trendlines Chart: [Vue 2](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/legacy/sandboxes/trendlines-chart) / [Vue 3](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/sandboxes/trendlines-chart)
+- Waterfall Chart: [Vue 2](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/legacy/sandboxes/waterfall-chart) / [Vue 3](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/sandboxes/waterfall-chart)
+- Word Tree Chart: [Vue 2](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/legacy/sandboxes/word-tree-chart) / [Vue 3](https://codesandbox.io/s/github/devstark-com/vue-google-charts/tree/master/sandboxes/word-tree-chart)
 
 ## License
 
