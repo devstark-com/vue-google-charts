@@ -3,24 +3,18 @@ import { shallowMount } from '@vue/test-utils';
 import { GChart } from '../src';
 
 import {
-  chartType,
-  chartData,
-  chartOptions,
-} from '../sandboxes/column-chart/src/components/google-chart/GoogleChartData';
+  type,
+  data,
+  options,
+} from '../sandboxes/trendlines-chart/src/components/GoogleChart';
 
-describe('ColumnChart', () => {
+describe('TrendlinesChart', () => {
   const Component = {
     template:
       '<div><GChart :type="type" :data="data" :options="options"/></div>',
     components: { GChart },
     props: ['type', 'data', 'options'],
   };
-
-  const type = chartType;
-
-  const data = chartData;
-
-  const options = chartOptions;
 
   it('should render a chart', () => {
     const wrapper = shallowMount(Component, {
@@ -31,7 +25,7 @@ describe('ColumnChart', () => {
       },
     });
 
-    const chart = wrapper.find('gchart-stub');
+    const chart = wrapper.find('g-chart-stub');
     expect(chart.attributes('type')).toBe(type);
     expect(chart.attributes('data')).toBe(data.flat().join(','));
   });

@@ -2,6 +2,12 @@ import { shallowMount } from '@vue/test-utils';
 
 import { GChart } from '../src';
 
+import {
+  chartType,
+  chartData,
+  chartOptions,
+} from '../sandboxes/area-chart/src/components/google-chart/GoogleChartData';
+
 describe('AreaChart', () => {
   const Component = {
     template:
@@ -10,24 +16,11 @@ describe('AreaChart', () => {
     props: ['type', 'data', 'options'],
   };
 
-  const type = 'AreaChart';
+  const type = chartType;
 
-  const data = [
-    ['Year', 'Sales', 'Expenses'],
-    ['2013', 1000, 400],
-    ['2014', 1170, 460],
-    ['2015', 660, 1120],
-    ['2016', 1030, 540],
-  ];
+  const data = chartData;
 
-  const options = {
-    title: 'Company Performance',
-    hAxis: { title: 'Year', titleTextStyle: { color: '#333' } },
-    vAxis: { minValue: 0 },
-    chartArea: { width: '50%', height: '70%' },
-    width: 800,
-    height: 600,
-  };
+  const options = chartOptions;
 
   it('should render a chart', () => {
     const wrapper = shallowMount(Component, {

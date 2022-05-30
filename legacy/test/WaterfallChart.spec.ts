@@ -6,14 +6,14 @@ import {
   chartType,
   chartData,
   chartOptions,
-} from '../sandboxes/column-chart/src/components/google-chart/GoogleChartData';
+} from '../sandboxes/waterfall-chart/src/components/google-chart/GoogleChartData';
 
-describe('ColumnChart', () => {
+describe('WaterfallChart', () => {
   const Component = {
     template:
-      '<div><GChart :type="type" :data="data" :options="options"/></div>',
+      '<div><GChart :type="type" :data="data" :options="options" :isFirstRowLabels="isFirstRowLabels"/></div>',
     components: { GChart },
-    props: ['type', 'data', 'options'],
+    props: ['type', 'data', 'options', 'isFirstRowLabels'],
   };
 
   const type = chartType;
@@ -22,12 +22,15 @@ describe('ColumnChart', () => {
 
   const options = chartOptions;
 
+  const isFirstRowLabels = true;
+
   it('should render a chart', () => {
     const wrapper = shallowMount(Component, {
       propsData: {
         type,
         data,
         options,
+        isFirstRowLabels,
       },
     });
 

@@ -28,7 +28,12 @@
     ],
     "target": "esnext",
     /* Completeness */
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "vue-google-charts": [
+        "src/index.ts"
+      ]
+    }
   },
   "include": [
     "src"

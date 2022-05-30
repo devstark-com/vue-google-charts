@@ -2,29 +2,18 @@ import { shallowMount } from '@vue/test-utils';
 
 import { GChart } from '../src';
 
+import {
+  type,
+  data,
+  options,
+} from '../sandboxes/pie-chart/src/components/GoogleChart';
+
 describe('PieChart', () => {
   const Component = {
     template:
       '<div><GChart :type="type" :data="data" :options="options"/></div>',
     components: { GChart },
     props: ['type', 'data', 'options'],
-  };
-
-  const type = 'PieChart';
-
-  const data = [
-    ['Task', 'Hours per Day'],
-    ['Work', 11],
-    ['Eat', 2],
-    ['Commute', 2],
-    ['Watch TV', 2],
-    ['Sleep', 7],
-  ];
-
-  const options = {
-    title: 'My Daily Activities',
-    width: 800,
-    height: 600,
   };
 
   it('should render a chart', () => {
