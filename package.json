@@ -15,7 +15,6 @@
   "bugs": {
     "url": "https://github.com/devstark-com/vue-google-charts/issues"
   },
-  "packageManager": "pnpm@6.32.13",
   "main": "./src/index.ts",
   "types": "./dist/index.d.ts",
   "publishConfig": {
