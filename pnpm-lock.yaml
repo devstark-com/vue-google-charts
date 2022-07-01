@@ -45,7 +45,7 @@ specifiers:
   simple-github-release: ^1.0.0
   size-limit: ^7.0.8
   standard-version: ^9.3.2
-  tsd: ^0.20.0
+  tsd: ^0.21.0
   typescript: ^4.6.3
   vite: ^2.9.6
   vue: ^3.2.33
@@ -93,7 +93,7 @@ devDependencies:
   simple-github-release: 1.0.0
   size-limit: 7.0.8
   standard-version: 9.3.2
-  tsd: 0.20.0
+  tsd: 0.21.0
   typescript: 4.6.3
   vite: 2.9.6
   vue: 3.2.33
@@ -4619,8 +4619,8 @@ packages:
     resolution: {integrity: sha512-eZxlbI8GZscaGS7kkc/trHTT5xgrjH3/1n2JDwusC9iahPKWMRvRjJSAN5mCXviuTGQ/lHnhvv8Q1YTpnfz9gA==}
     dev: true
 
-  /@tsd/typescript/4.6.3:
-    resolution: {integrity: sha512-WjipklCf6qWQL4Hkw+FSwOXMA5JqKv04ro/c1aviYSzLJFdcFMrR/FHjOGBIEAIq7pb8Bw74wd+G45dWfC/Jnw==}
+  /@tsd/typescript/4.7.4:
+    resolution: {integrity: sha512-jbtC+RgKZ9Kk65zuRZbKLTACf+tvFW4Rfq0JEMXrlmV3P3yme+Hm+pnb5fJRyt61SjIitcrC810wj7+1tgsEmg==}
     hasBin: true
     dev: true
 
@@ -5994,7 +5994,7 @@ packages:
     dev: true
 
   /array-union/1.0.2:
-    resolution: {integrity: sha1-mjRBDk9OPaI96jdb5b5w8kd47Dk=}
+    resolution: {integrity: sha512-Dxr6QJj/RdU/hCaBjOfxW+q6lyuVE6JFWIrAUpuOOhoJJoQ99cUn3igRaHVB5P9WrgFVN0FfArM3x0cueOU8ng==}
     engines: {node: '>=0.10.0'}
     dependencies:
       array-uniq: 1.0.3
@@ -15434,12 +15434,12 @@ packages:
       strip-json-comments: 2.0.1
     dev: true
 
-  /tsd/0.20.0:
-    resolution: {integrity: sha512-iba/JlyT3qtnA9t8VrX2Fipu3L31U48oRIf1PNs+lIwQ7n63GTkt9eQlB5bLtfb7nYfy9t8oZzs+K4QEoEIS8Q==}
+  /tsd/0.21.0:
+    resolution: {integrity: sha512-6DugCw1Q4H8HYwDT3itzgALjeDxN4RO3iqu7gRdC/YNVSCRSGXRGQRRasftL1uKDuKxlFffYKHv5j5G7YnKGxQ==}
     engines: {node: '>=12'}
     hasBin: true
     dependencies:
-      '@tsd/typescript': 4.6.3
+      '@tsd/typescript': 4.7.4
       eslint-formatter-pretty: 4.1.0
       globby: 11.1.0
       meow: 9.0.0
