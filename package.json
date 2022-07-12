@@ -84,7 +84,7 @@
     "babel-jest": "^27.5.1",
     "babel-loader": "^8.2.4",
     "browserslist": "^4.19.1",
-    "clean-publish": "^3.4.5",
+    "clean-publish": "^4.0.1",
     "commitizen": "^4.2.4",
     "cz": "^1.8.2",
     "del-cli": "^4.0.1",
