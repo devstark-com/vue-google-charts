@@ -45,11 +45,13 @@ export function getChartsLoader(): Promise<GoogleChartLoader> {
         document.head.append(script);
       }
 
-      script.onload = () => {
+      // Use addEventListener so we don't clobber an onload handler that
+      // another instance may have already set on a shared loader script.
+      script.addEventListener('load', () => {
         if (window.google !== undefined) {
           resolve(window.google.charts);
         }
-      };
+      });
     });
   }
 
@@ -67,7 +69,7 @@ export function getChartsLoader(): Promise<GoogleChartLoader> {
 export async function loadGoogleCharts(
   version: GoogleChartVersion = 'current',
   {
-    packages = ['corechart', 'controls'],
+    packages = ['corechart', 'table'],
     language = 'en',
     mapsApiKey,
   }: GoogleChartLoaderOptions
