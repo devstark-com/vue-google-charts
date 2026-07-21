@@ -9,7 +9,7 @@
     "test:unit": "jest -c jest.config.js"
   },
   "devDependencies": {
-    "@babel/core": "7.17.9",
+    "@babel/core": "^7.22.0",
     "@swc/core": "^1.2.124",
     "@swc/jest": "^0.2.20",
     "@vue/test-utils": "1",
