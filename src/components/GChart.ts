@@ -121,6 +121,9 @@ export const GChart = defineComponent({
       }
     );
 
+    // Keep a single reference so the same listener can be removed on unmount.
+    const onResize = debounce(drawChart, props.resizeDebounce) as EventListener;
+
     onMounted(() => {
       loadGoogleCharts(props.version, props.settings).then(api => {
         if (api !== undefined) {
@@ -142,10 +145,7 @@ export const GChart = defineComponent({
       });
 
       if (props.resizeDebounce > 0) {
-        window.addEventListener(
-          'resize',
-          debounce(drawChart, props.resizeDebounce) as EventListener
-        );
+        window.addEventListener('resize', onResize);
       }
     });
 
@@ -158,10 +158,7 @@ export const GChart = defineComponent({
       }
 
       if (props.resizeDebounce > 0) {
-        window.removeEventListener(
-          'resize',
-          debounce(drawChart, props.resizeDebounce) as EventListener
-        );
+        window.removeEventListener('resize', onResize);
       }
     });
 
