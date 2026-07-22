@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/devstark-com/vue-google-charts/compare/v1.1.0...v1.1.1) (2026-07-22)
+
+
+### Bug Fixes
+
+* prevent resize listener leak and harden charts loader ([#246](https://github.com/devstark-com/vue-google-charts/issues/246)) ([3744992](https://github.com/devstark-com/vue-google-charts/commit/3744992f8ceeaf2ef698ceaeecb821914e415b55))
+
 ## [1.1.0](https://github.com/devstark-com/vue-google-charts/compare/v1.0.0...v1.1.0) (2022-05-30)
 
 
